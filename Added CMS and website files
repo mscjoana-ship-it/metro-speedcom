@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GW40H9LMYZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GW40H9LMYZ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Metro Speedcom Corporation | Copier & IT Rentals</title>
+    <meta name="description" content="Metro Speedcom offers affordable copier, laptop, and desktop rentals in Metro Manila, Tarlac, and Luzon. Trusted by PEZA locators and BPOs.">
+    <meta name="keywords" content="Copier Rental Philippines, Laptop Rental Manila, Tarlac Copier, Metro Speedcom, PEZA Equipment Rental">
+    <meta name="author" content="Metro Speedcom Corporation">
+
+    <meta property="og:title" content="Metro Speedcom | Copier & IT Rentals">
+    <meta property="og:description" content="Reliable copier, laptop, and desktop rentals for businesses in Luzon. Get a free quote today!">
+    <meta property="og:image" content="https://metro-speedcom.netlify.app/Kyocera-copier.png">
+    <meta property="og:url" content="https://metro-speedcom.netlify.app/">
+    <meta property="og:type" content="website">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .hero-pattern {
+            background-color: #0f172a;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <nav class="fixed w-full z-50 glass-effect border-b border-slate-200 shadow-sm transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    
+                    <img src="logo.png" alt="Metro Speedcom Logo" class="h-12 w-auto">
+
+                    <div>
+                        <h1 class="font-bold text-xl tracking-tight text-slate-900 leading-none">METRO SPEEDCOM</h1>
+                        <span class="text-xs text-blue-700 font-semibold tracking-wide">CORPORATION</span>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-slate-600 hover:text-blue-700 font-medium transition">Home</a>
+                    <a href="#about" class="text-slate-600 hover:text-blue-700 font-medium transition">About Us</a>
+                    <a href="#rentals" class="text-slate-600 hover:text-blue-700 font-medium transition">Rentals</a>
+                    <a href="#services" class="text-slate-600 hover:text-blue-700 font-medium transition">Services</a>
+                    <a href="#contact" class="px-5 py-2.5 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition shadow-lg shadow-blue-700/30 font-medium">Get a Quote</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-blue-700 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2 shadow-lg">
+                <a href="#home" class="block px-3 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-700 rounded-md font-medium">Home</a>
+                <a href="#about" class="block px-3 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-700 rounded-md font-medium">About Us</a>
+                <a href="#rentals" class="block px-3 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-700 rounded-md font-medium">Rentals</a>
+                <a href="#services" class="block px-3 py-3 text-slate-600 hover:bg-slate-50 hover:text-blue-700 rounded-md font-medium">Services</a>
+                <a href="#contact" class="block px-3 py-3 text-blue-700 font-bold">Get a Quote</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="pt-32 pb-20 lg:pt-48 lg:pb-32 hero-pattern text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-blue-600/10 skew-x-12 translate-x-20"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8 animate-fade-in-up">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-900/50 rounded-full border border-blue-700/50 backdrop-blur-sm">
+                        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                        <span class="text-sm font-medium text-blue-100">Serving Metro Manila & Luzon</span>
+                    </div>
+                    <h1 class="text-5xl lg:text-7xl font-bold leading-tight tracking-tight">
+                        Copier & Laptop <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Rentals Philippines</span>
+                    </h1>
+                    <p class="text-lg text-slate-300 max-w-xl leading-relaxed">
+                        Trusted provider of Copier, Laptop, and Desktop rentals for offices and PEZA locators. Minimize capital expenses with our worry-free rental packages.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#rentals" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold text-center transition shadow-lg shadow-blue-600/40">
+                            View Rental Plans
+                        </a>
+                        <a href="#contact" class="px-8 py-4 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg font-semibold text-center transition">
+                            Contact Us
+                        </a>
+                    </div>
+                    <div class="pt-8 flex flex-wrap items-center gap-6 text-slate-400">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-check-circle text-blue-400"></i>
+                            <span class="text-sm">Includes Toner & Maintenance</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-building text-blue-400"></i>
+                            <span class="text-sm">Ideal for PEZA Locators</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden lg:block relative">
+                    <div class="relative z-10 bg-gradient-to-tr from-slate-800 to-slate-900 rounded-2xl p-6 shadow-2xl border border-slate-700 transform rotate-3 hover:rotate-0 transition duration-500">
+                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500 rounded-full blur-3xl opacity-20"></div>
+                        <div class="bg-slate-950 rounded-lg h-64 w-full flex items-center justify-center border border-slate-800 relative overflow-hidden group">
+                             <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')] bg-cover bg-center opacity-50 group-hover:scale-105 transition duration-700"></div>
+                             <div class="relative z-10 bg-black/70 p-6 rounded-xl backdrop-blur-sm text-center">
+                                <p class="text-blue-300 font-bold uppercase text-xs mb-2">Metro Speedcom</p>
+                                <p class="text-white font-bold text-xl">Empowering Businesses</p>
+                                <p class="text-slate-400 text-sm mt-1">From Manila to Tarlac</p>
+                             </div>
+                        </div>
+                        <div class="mt-6 grid grid-cols-3 gap-4">
+                            <div class="h-2 bg-slate-700 rounded w-2/3"></div>
+                            <div class="h-2 bg-slate-700 rounded w-full"></div>
+                            <div class="h-2 bg-slate-700 rounded w-1/2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="bg-blue-900 border-y border-blue-800 py-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <h3 class="text-white font-bold whitespace-nowrap"><i class="fa-solid fa-map-location-dot mr-2"></i> Service Areas:</h3>
+                <div class="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2 text-blue-200 text-sm font-medium">
+                    <span>Metro Manila</span> &bull;
+                    <span>Laguna</span> &bull;
+                    <span>Cavite</span> &bull;
+                    <span>Batangas</span> &bull;
+                    <span>Bulacan</span> &bull;
+                    <span>Pampanga</span> &bull;
+                    <span>Nueva Ecija</span> &bull;
+                    <span>Tarlac</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 sm:text-4xl mb-4">Optimizing Operations, Reducing Costs</h2>
+                <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full mb-6"></div>
+                <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                    At Metro Speedcom, our mission is to help companies optimize operations and reduce capital expenses through reliable, cost-efficient equipment rentals. 
+                </p>
+                <div class="bg-blue-50 p-6 rounded-xl border border-blue-100 text-left md:text-center">
+                    <p class="text-slate-700 italic">
+                        "With a warehouse in <span class="font-bold text-blue-700">Concepcion, Tarlac</span>, we efficiently serve companies in both Central and Southern Luzon, ensuring fast delivery and responsive technical support."
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                    <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-6">
+                        <i class="fa-solid fa-hand-holding-dollar text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Cost Efficient</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Avoid high upfront ownership costs. Our rental packages include toner and maintenance, giving you a worry-free experience.
+                    </p>
+                </div>
+                <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                    <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 mb-6">
+                        <i class="fa-solid fa-industry text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">PEZA & B2B Trusted</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        We specialize in serving PEZA locators, corporate offices, and BPO operations with professionalism and fast response times.
+                    </p>
+                </div>
+                <div class="p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center text-indigo-600 mb-6">
+                        <i class="fa-solid fa-calendar-check text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Flexible Terms</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Whether for short-term projects or long-term expansion, we offer Daily, Weekly, Monthly, and Yearly rental options.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="rentals" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">Equipment Rental Packages</h2>
+                <p class="text-slate-500 mt-4 max-w-2xl mx-auto">
+                    Choose from our wide range of IT equipment and copiers. All packages include technical support and maintenance.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-2xl transition-all duration-300 flex flex-col">
+                    <div class="h-52 bg-slate-100 relative overflow-hidden group">
+                         <img src="Kyocera-copier.png" alt="Kyocera Copier" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                         <div class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md z-10">KYOCERA</div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Kyocera Copier Rental</h3>
+                        <p class="text-slate-500 text-sm mb-6">
+                            Reliable, high-volume printing solutions without the capital expense.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center gap-3 text-sm text-slate-600"><i class="fa-solid fa-check text-green-500"></i> Free Toner & Consumables</li>
+                            <li class="flex items-center gap-3 text-sm text-slate-600"><i class="fa-solid fa-check text-green-500"></i> Regular Maintenance</li>
+                            <li class="flex items-center gap-3 text-sm text-slate-600"><i class="fa-solid fa-check text-green-500"></i> Fast Repair Response</li>
+                        </ul>
+                        <button onclick="openModal('Kyocera Copier Rental')" class="mt-auto w-full py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition">Inquire Now</button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-2xl transition-all duration-300 flex flex-col">
+                    <div class="h-52 bg-slate-100 relative overflow-hidden group">
+                        <img src="Samsung-copier.png" alt="Samsung Copier" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute top-4 right-4 bg-blue-800 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md z-10">SAMSUNG</div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Samsung Copier Rental</h3>
+                        <p class="text-slate-500 text-sm mb-6">
+                            Efficient multifunction printers ideal for corporate environments.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center gap-3 text-sm text-slate-600"><i class="fa-solid fa-check text-green-500"></i> Heavy Duty Performance</li>
+                            <li class="flex items-center gap-3 text-sm text-slate-600"><i class="fa-solid fa-check text-green-500"></i> Monthly/Yearly Terms</li>
+                            <li class="flex items-center gap-3 text-sm text-slate-600"><i class="fa-solid fa-check text-green-500"></i> Full Technical Support</li>
+                        </ul>
+                        <button onclick="openModal('Samsung Copier Rental')" class="mt-auto w-full py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition">Inquire Now</button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-2xl transition-all duration-300 flex flex-col sm:col-span-2 lg:col-span-1">
+                    <div class="h-52 bg-slate-100 relative overflow-hidden group">
+                        <img src="Laptop-and-desktop.png" alt="Laptop and Desktop Rental" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Laptop & Desktop Rentals</h3>
+                        <p class="text-slate-500 text-sm mb-6">
+                            Scalable IT solutions for BPO operations, temporary projects, and expansions.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center gap-3 text-sm text-slate-600"><i class="fa-solid fa-check text-green-500"></i> Short-term & Long-term</li>
+                            <li class="flex items-center gap-3 text-sm text-slate-600"><i class="fa-solid fa-check text-green-500"></i> Core i3, i5, i7 Options</li>
+                            <li class="flex items-center gap-3 text-sm text-slate-600"><i class="fa-solid fa-check text-green-500"></i> Bulk Deployment Ready</li>
+                        </ul>
+                        <button onclick="openModal('IT Equipment Rental')" class="mt-auto w-full py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition">Inquire Now</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900">Get In Touch</h2>
+                <p class="text-slate-600 mt-4">Contact us today for a customized rental proposal.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <div class="bg-slate-50 p-8 rounded-xl border border-slate-100 flex items-start gap-6">
+                        <div class="bg-blue-100 p-4 rounded-full text-blue-600 shrink-0">
+                             <i class="fa-solid fa-phone text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-lg">Call Us</h4>
+                            <p class="text-slate-600 mt-1">
+                                Mobile: <a href="tel:09972486777" class="hover:text-blue-600 font-medium">0997-248-6777</a>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-slate-50 p-8 rounded-xl border border-slate-100 flex items-start gap-6">
+                        <div class="bg-blue-100 p-4 rounded-full text-blue-600 shrink-0">
+                             <i class="fa-solid fa-envelope text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-lg">Email Us</h4>
+                            <p class="text-slate-600 mt-1 break-all">
+                                <a href="mailto:joana.metrospeedcom@gmail.com" class="hover:text-blue-600 font-medium">joana.metrospeedcom@gmail.com</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 p-8 rounded-xl border border-slate-100 flex items-start gap-6">
+                        <div class="bg-blue-100 p-4 rounded-full text-blue-600 shrink-0">
+                             <i class="fa-brands fa-facebook text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-lg">Facebook</h4>
+                            <p class="text-slate-600 mt-1">
+                                <a href="https://facebook.com/metrospeedcom2024" target="_blank" class="hover:text-blue-600 font-medium">facebook.com/metrospeedcom2024</a>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-900 p-6 rounded-xl text-white mt-8">
+                        <h4 class="font-bold mb-2">Our Warehouses</h4>
+                        <ul class="space-y-2 text-sm text-blue-100">
+                             <li><i class="fa-solid fa-location-dot mr-2"></i> <strong>Main Office:</strong> Gilmore Avenue, Quezon City</li>
+                             <li><i class="fa-solid fa-warehouse mr-2"></i> <strong>Warehouse:</strong> Concepcion, Tarlac (Central/Southern Luzon Hub)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
+                    <h3 class="text-2xl font-bold mb-6">Send a Message</h3>
+                    
+                    <form class="space-y-4" action="https://formspree.io/f/mkgdkwag" method="POST">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1">Name</label>
+                                <input type="text" name="name" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1">Phone</label>
+                                <input type="text" name="phone" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Equipment Needed</label>
+                            <select name="equipment" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500">
+                                <option>Kyocera Copier</option>
+                                <option>Samsung Copier</option>
+                                <option>Laptops (Short Term)</option>
+                                <option>Laptops (Long Term)</option>
+                                <option>Desktops</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Company / Location</label>
+                            <input type="text" name="location" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500" placeholder="e.g., PEZA Zone, Cavite">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Message</label>
+                            <textarea name="message" rows="4" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500"></textarea>
+                        </div>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-lg transition shadow-lg shadow-blue-600/30">Submit Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-2 mb-4 text-white">
+                        <i class="fa-solid fa-print"></i>
+                        <span class="font-bold text-xl">METRO SPEEDCOM</span>
+                    </div>
+                    <p class="text-sm leading-relaxed max-w-sm">
+                        Dependable solutions to keep your business running smoothly. The premier B2B partner for copier and IT equipment rentals in Luzon.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Rental Services</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#rentals" class="hover:text-white transition">Kyocera Copiers</a></li>
+                        <li><a href="#rentals" class="hover:text-white transition">Samsung Copiers</a></li>
+                        <li><a href="#rentals" class="hover:text-white transition">Laptop Rentals</a></li>
+                        <li><a href="#rentals" class="hover:text-white transition">Desktop Rentals</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li>0997-248-6777</li>
+                        <li>joana.metrospeedcom@gmail.com</li>
+                        <li><a href="https://facebook.com/metrospeedcom2024" target="_blank" class="text-blue-400 hover:text-white">Visit Facebook Page</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+                <p>&copy; 2024 Metro Speedcom Corporation. All rights reserved.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="https://facebook.com/metrospeedcom2024" target="_blank" class="hover:text-white"><i class="fa-brands fa-facebook text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="inquiryModal" class="fixed inset-0 z-[60] hidden">
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-full max-w-lg rounded-2xl shadow-2xl p-8 animate-fade-in-up">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-slate-900">Rental Inquiry</h3>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <form action="https://formspree.io/f/mkgdkwag" method="POST" onsubmit="alert('Inquiry sent! We will contact you shortly.');">
+                <div class="mb-4">
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Interested In</label>
+                    <input type="text" name="product" id="modalProductInput" class="w-full bg-slate-100 border-none rounded-lg px-4 py-3 text-slate-700 font-medium" readonly>
+                </div>
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">Contact Person</label>
+                        <input type="text" name="name" class="w-full border border-slate-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">Mobile No.</label>
+                        <input type="tel" name="phone" class="w-full border border-slate-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none" required>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Rental Duration / Needs</label>
+                    <textarea name="message" class="w-full border border-slate-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none" rows="3" placeholder="e.g. 12 months for BPO setup in Laguna..."></textarea>
+                </div>
+                <button class="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 rounded-xl shadow-lg shadow-blue-700/30 transition">Send Inquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+
+        // Modal Logic
+        function openModal(productName) {
+            document.getElementById('modalProductInput').value = productName;
+            document.getElementById('inquiryModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('inquiryModal').classList.add('hidden');
+        }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Metro Speedcom - Copier & IT Rentals",
+      "image": "https://metro-speedcom.netlify.app/logo.png",
+      "url": "https://metro-speedcom.netlify.app/",
+      "telephone": "+639972486777",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Gilmore Avenue",
+        "addressLocality": "Quezon City",
+        "addressRegion": "Metro Manila",
+        "addressCountry": "PH"
+      },
+      "priceRange": "₱₱",
+      "description": "Metro Speedcom offers affordable copier, laptop, and desktop rentals in Metro Manila, Tarlac, and Luzon."
+    }
+    </script>
+    </body>
+</html>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://metro-speedcom.netlify.app/</loc>
+  <lastmod>2025-12-16T08:21:43+00:00</lastmod>
+</url>
+
+
+</urlset>

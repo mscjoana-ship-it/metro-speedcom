@@ -6,7 +6,6 @@
     <title>Business Blog | Metro Speedcom Corporation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-900">
     <nav class="bg-white border-b py-4 px-6 flex justify-between items-center shadow-sm">
@@ -24,8 +23,7 @@
 
     <main class="max-w-6xl mx-auto py-12 px-6">
         <div id="posts-container" class="grid md:grid-cols-1 gap-8">
-            <p class="text-center text-slate-500">Loading latest updates...</p>
-        </div>
+            </div>
     </main>
     
     <footer class="bg-slate-900 text-slate-400 py-12 text-center border-t border-slate-800">
@@ -34,64 +32,45 @@
     </footer>
 
     <script>
-        // METRO SPEEDCOM BLOG LOADER
-        function loadPosts() {
+        // THIS IS YOUR POST DATABASE
+        // To add a new post, just copy the { ... } block and paste a new one above it!
+        const blogPosts = [
+            {
+                title: "Reliable Copier Rental Services for Businesses in Metro Manila & PEZA Zones",
+                date: "March 11, 2026",
+                category: "Business Solutions",
+                // This path points directly to your uploaded image
+                image: "/images/uploads/copier-rental-metro-manila-office-printing-free-demo.jpg.jpg",
+                description: "Looking for cost-effective office printing? Metro Speedcom offers premium Kyocera and Samsung copier rentals with fixed monthly rates and reliable technical support during office hours for BPOs and Corporate offices."
+            }
+        ];
+
+        function displayPosts() {
             const container = document.getElementById('posts-container');
-            
-            // This is your current post data. 
-            // When you want to add a new post, just copy this block and paste it above the first one!
-            const posts = [
-                {
-                    title: "Reliable Copier Rental Services for Businesses in Metro Manila & PEZA Zones",
-                    date: "March 11, 2026",
-                    category: "Business Solutions",
-                    // Fixed: Using the exact filename from your latest upload
-                    image: "/images/uploads/copier-rental-metro-manila-office-printing-free-demo.jpg.jpg",
-                    description: "Looking for cost-effective office printing? Metro Speedcom offers premium Kyocera and Samsung copier rentals with fixed monthly rates and reliable technical support during office hours for BPOs and Corporate offices."
-                }
-            ];
-
-            // This clears the 'Loading' text and adds the post
-            container.innerHTML = ''; 
-
-            posts.forEach(post => {
-                const postHTML = `
-                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col md:flex-row hover:shadow-lg transition-all duration-300">
-                        <div class="md:w-1/3">
-                            <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover min-h-[250px]">
+            container.innerHTML = blogPosts.map(post => `
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col md:flex-row hover:shadow-lg transition-all duration-300">
+                    <div class="md:w-1/3">
+                        <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover min-h-[250px]">
+                    </div>
+                    <div class="p-8 md:w-2/3 flex flex-col justify-center">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full uppercase">${post.category}</span>
+                            <span class="text-slate-400 text-xs">${post.date}</span>
                         </div>
-                        <div class="p-8 md:w-2/3 flex flex-col justify-center">
-                            <div class="flex items-center gap-2 mb-3">
-                                <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full uppercase">${post.category}</span>
-                                <span class="text-slate-400 text-xs">${post.date}</span>
-                            </div>
-                            <h2 class="text-2xl font-bold text-slate-900 mb-4">${post.title}</h2>
-                            <p class="text-slate-600 mb-6 leading-relaxed">${post.description}</p>
-                            <div>
-                                <a href="/index.html#contact" class="inline-flex items-center gap-2 bg-blue-700 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-800 transition">
-                                    Inquire Now <i class="fa-solid fa-arrow-right text-sm"></i>
-                                </a>
-                            </div>
+                        <h2 class="text-2xl font-bold text-slate-900 mb-4">${post.title}</h2>
+                        <p class="text-slate-600 mb-6 leading-relaxed">${post.description}</p>
+                        <div>
+                            <a href="/index.html#contact" class="inline-flex items-center gap-2 bg-blue-700 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-800 transition">
+                                Inquire Now <i class="fa-solid fa-arrow-right text-sm"></i>
+                            </a>
                         </div>
                     </div>
-                `;
-                container.innerHTML += postHTML;
-            });
+                </div>
+            `).join('');
         }
 
-        // Run the function when page loads
-        window.onload = loadPosts;
-
-        // Keep Netlify Identity working for your CMS login
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-                if (!user) {
-                    window.netlifyIdentity.on("login", () => {
-                        document.location.href = "/admin/";
-                    });
-                }
-            });
-        }
+        // Run this as soon as the page opens
+        window.onload = displayPosts;
     </script>
 </body>
 </html>

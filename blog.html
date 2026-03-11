@@ -6,6 +6,7 @@
     <title>Business Blog | Metro Speedcom Corporation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-900">
     <nav class="bg-white border-b py-4 px-6 flex justify-between items-center shadow-sm">
@@ -23,24 +24,7 @@
 
     <main class="max-w-6xl mx-auto py-12 px-6">
         <div id="posts-container" class="grid md:grid-cols-1 gap-8">
-            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col md:flex-row hover:shadow-lg transition-all duration-300">
-                <div class="md:w-1/3">
-                    <img src="images/uploads/metro-speedcom-copier-rentals.jpg" alt="Kyocera and Samsung Copier Rentals" class="w-full h-full object-cover min-h-[250px]">
-                </div>
-                <div class="p-8 md:w-2/3 flex flex-col justify-center">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full uppercase">Business Solutions</span>
-                        <span class="text-slate-400 text-xs">February 6, 2026</span>
-                    </div>
-                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Efficient Copier & IT Rentals: Powering B2B Operations in Metro Manila</h2>
-                    <p class="text-slate-600 mb-6 leading-relaxed">Upgrade your office efficiency with Metro Speedcom's premium Kyocera and Samsung copier rentals. Serving Metro Manila and nearby provinces with fixed monthly fees and free maintenance.</p>
-                    <div>
-                        <a href="/index.html#contact" class="inline-flex items-center gap-2 bg-blue-700 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-800 transition">
-                            Inquire Now <i class="fa-solid fa-arrow-right text-sm"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <p class="text-center text-slate-500">Loading latest updates...</p>
         </div>
     </main>
     
@@ -48,5 +32,48 @@
         <p class="mb-2 text-white font-bold uppercase tracking-widest">Metro Speedcom Corporation</p>
         <p>&copy; 2026. All rights reserved.</p>
     </footer>
+
+    <script>
+        // This script fetches the Markdown files created by Netlify CMS
+        // and converts them into the HTML "Cards" automatically.
+        async function loadPosts() {
+            const container = document.getElementById('posts-container');
+            try {
+                // Change 'posts' to the folder name in your GitHub where CMS saves .md files
+                const response = await fetch('/posts/index.json'); 
+                if (!response.ok) throw new Error('No posts found');
+                
+                const posts = await response.json();
+                container.innerHTML = ''; // Clear loading text
+
+                posts.forEach(post => {
+                    const postHTML = `
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col md:flex-row hover:shadow-lg transition-all duration-300">
+                            <div class="md:w-1/3">
+                                <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover min-h-[250px]">
+                            </div>
+                            <div class="p-8 md:w-2/3 flex flex-col justify-center">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full uppercase">${post.category || 'Business'}</span>
+                                    <span class="text-slate-400 text-xs">${post.date}</span>
+                                </div>
+                                <h2 class="text-2xl font-bold text-slate-900 mb-4">${post.title}</h2>
+                                <p class="text-slate-600 mb-6 leading-relaxed">${post.description}</p>
+                                <div>
+                                    <a href="/index.html#contact" class="inline-flex items-center gap-2 bg-blue-700 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-800 transition">
+                                        Inquire Now <i class="fa-solid fa-arrow-right text-sm"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += postHTML;
+                });
+            } catch (err) {
+                container.innerHTML = '<p class="text-center">Start by creating your first post in the CMS!</p>';
+            }
+        }
+        window.onload = loadPosts;
+    </script>
 </body>
 </html>

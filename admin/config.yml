@@ -1,20 +1,17 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: mscjoana-ship-it/metro-speedcom
   branch: main
 
-# This is where the CMS will save the actual files
 media_folder: "images/uploads"
-
-# IMPORTANT: This is the path the website uses to display the image
-# Adding the leading slash ensures it works from any page (like /blog or /admin)
 public_folder: "/images/uploads"
 
 collections:
   - name: "blog"
     label: "Blog Posts"
-    folder: "posts" # This will create a 'posts' folder in your GitHub
+    folder: "posts" 
     create: true
-    extension: "md" # Changed to Markdown for cleaner data
+    extension: "md"
     format: "frontmatter"
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:

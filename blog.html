@@ -6,27 +6,26 @@
     <title>Business Blog | Metro Speedcom Corporation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-900">
     <nav class="bg-white border-b py-4 px-6 flex justify-between items-center shadow-sm sticky top-0 z-50">
         <a href="/" class="flex items-center gap-2">
             <img src="logo.PNG" alt="Logo" class="h-10">
-            <span class="font-bold text-slate-800 uppercase tracking-tight">Metro Speedcom</span>
+            <span class="font-bold text-slate-800">METRO SPEEDCOM</span>
         </a>
         <a href="/" class="text-blue-700 font-semibold hover:underline">← Home</a>
     </nav>
 
     <header class="py-16 bg-slate-900 text-white text-center">
         <h1 class="text-4xl font-extrabold mb-4">Latest Insights & Updates</h1>
-        <p class="text-slate-400 max-w-2xl mx-auto px-6">Trusted IT and Copier Solutions for BPOs and PEZA Locators in Metro Manila.</p>
+        <p class="text-slate-400">Trusted IT and Copier Solutions for BPOs and PEZA Locators.</p>
     </header>
 
     <main class="max-w-6xl mx-auto py-12 px-6">
         <div id="posts-container" class="grid gap-8">
-            <div id="loading-state" class="text-center py-20">
+            <div class="text-center py-20" id="loading">
                 <i class="fa-solid fa-circle-notch fa-spin text-4xl text-blue-600 mb-4"></i>
-                <p class="text-slate-500 font-medium">Connecting to Metro Speedcom updates...</p>
+                <p class="text-slate-500">Connecting to Metro Speedcom updates...</p>
             </div>
         </div>
     </main>
@@ -37,72 +36,61 @@
     </footer>
 
     <script>
-        // --- YOUR CORRECT GITHUB DETAILS ---
         const GITHUB_USER = "mscjoana-ship-it"; 
         const REPO_NAME = "metro-speedcom";             
 
-        async function fetchCMSPosts() {
+        async function fetchPosts() {
             const container = document.getElementById('posts-container');
+            // We look inside the 'posts' folder you defined in config.yml
             const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/posts`;
 
             try {
                 const response = await fetch(apiUrl);
-                if (!response.ok) throw new Error("No posts found yet");
+                if (!response.ok) throw new Error("No posts folder found yet");
                 
                 const files = await response.json();
-                container.innerHTML = ''; // Clear loading spinner
+                container.innerHTML = ''; 
 
-                // Filter for markdown files and sort them (newest first)
                 const mdFiles = files.filter(f => f.name.endsWith('.md')).reverse();
-
-                if (mdFiles.length === 0) throw new Error("No markdown files");
 
                 for (const file of mdFiles) {
                     const contentRes = await fetch(file.download_url);
                     const text = await contentRes.text();
 
-                    // Extracting CMS Data
+                    // Regex to grab data between the quotes in your Markdown files
                     const title = text.match(/title: "(.*)"/)?.[1] || "Metro Speedcom Update";
-                    const desc = text.match(/description: "(.*)"/)?.[1] || "Click to read more about our latest services.";
+                    const desc = text.match(/description: "(.*)"/)?.[1] || "";
                     const img = text.match(/thumbnail: "(.*)"/)?.[1] || "";
-                    const dateRaw = text.match(/date: (.*)/)?.[1] || "";
-                    const date = dateRaw.split('T')[0] || "2026";
+                    const date = text.match(/date: (.*)/)?.[1]?.split('T')[0] || "";
 
                     container.innerHTML += `
-                        <article class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col md:flex-row hover:shadow-lg transition-all duration-300">
-                            <div class="md:w-1/3 bg-slate-100">
-                                <img src="${img}" alt="${title}" class="w-full h-full object-cover min-h-[250px]" onerror="this.src='https://via.placeholder.com/600x400?text=Metro+Speedcom+News'">
+                        <article class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col md:flex-row hover:shadow-lg transition-all">
+                            <div class="md:w-1/3">
+                                <img src="${img}" class="w-full h-full object-cover min-h-[250px]" onerror="this.src='https://via.placeholder.com/600x400?text=Metro+Speedcom'">
                             </div>
                             <div class="p-8 md:w-2/3 flex flex-col justify-center">
                                 <div class="flex items-center gap-2 mb-3">
-                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full uppercase">Solutions</span>
+                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full uppercase">Update</span>
                                     <span class="text-slate-400 text-xs">${date}</span>
                                 </div>
                                 <h2 class="text-2xl font-bold text-slate-900 mb-4">${title}</h2>
                                 <p class="text-slate-600 mb-6 leading-relaxed">${desc}</p>
-                                <div>
-                                    <a href="/index.html#contact" class="inline-flex items-center gap-2 bg-blue-700 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-800 transition">
-                                        Inquire Now <i class="fa-solid fa-arrow-right text-sm"></i>
-                                    </a>
-                                </div>
+                                <a href="/index.html#contact" class="inline-flex items-center gap-2 bg-blue-700 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-800 transition">
+                                    Inquire Now <i class="fa-solid fa-arrow-right text-sm"></i>
+                                </a>
                             </div>
                         </article>
                     `;
                 }
             } catch (err) {
-                // If the /posts folder doesn't exist yet, show this
                 container.innerHTML = `
-                    <div class="text-center py-16 bg-white rounded-3xl border-2 border-dashed border-slate-200 px-6">
-                        <h3 class="text-xl font-bold text-slate-800 mb-2">No Posts Yet</h3>
-                        <p class="text-slate-500 mb-6">Your blog is connected! Go to the Admin panel to publish your first update.</p>
-                        <a href="/admin/" class="bg-blue-700 text-white px-8 py-3 rounded-full font-bold hover:bg-blue-800 transition shadow-lg">
-                            Go to CMS Admin
-                        </a>
+                    <div class="text-center py-16 bg-white rounded-xl border-2 border-dashed border-slate-200">
+                        <p class="text-slate-500 mb-4">Your blog is ready! Create your first post in the admin panel.</p>
+                        <a href="/admin/" class="bg-blue-700 text-white px-6 py-2 rounded-full font-bold">Go to Admin</a>
                     </div>`;
             }
         }
-
-        window.onload = fetchCMSPosts;
+        window.onload = fetchPosts;
     </script>
 </body>
 </html>

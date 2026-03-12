@@ -9,66 +9,25 @@
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-900">
-    <nav class="bg-white border-b py-4 px-6 flex justify-between items-center shadow-sm">
+    <nav class="bg-white border-b py-4 px-6 flex justify-between items-center shadow-sm sticky top-0 z-50">
         <a href="/" class="flex items-center gap-2">
             <img src="logo.PNG" alt="Logo" class="h-10">
-            <span class="font-bold text-slate-800">METRO SPEEDCOM</span>
+            <span class="font-bold text-slate-800 uppercase tracking-tight">Metro Speedcom</span>
         </a>
-        <a href="/" class="text-blue-700 font-semibold">← Home</a>
+        <a href="/" class="text-blue-700 font-semibold hover:underline">← Home</a>
     </nav>
 
     <header class="py-16 bg-slate-900 text-white text-center">
-        <h1 class="text-4xl font-bold mb-4">Latest Insights & Updates</h1>
-        <p class="text-slate-400">Trusted IT and Copier Solutions for BPOs and PEZA Locators.</p>
+        <h1 class="text-4xl font-extrabold mb-4">Latest Insights & Updates</h1>
+        <p class="text-slate-400 max-w-2xl mx-auto px-6">Trusted IT and Copier Solutions for BPOs and PEZA Locators in Metro Manila.</p>
     </header>
 
     <main class="max-w-6xl mx-auto py-12 px-6">
         <div id="posts-container" class="grid gap-8">
-            
-            <article class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col md:flex-row hover:shadow-lg transition-all">
-                <div class="md:w-1/3 bg-slate-200">
-                    <img src="/images/uploads/copier-demo.jpg" 
-                         alt="Kyocera Copier Demo" 
-                         class="w-full h-full object-cover min-h-[250px]"
-                         onerror="this.src='https://via.placeholder.com/600x400?text=Check+Image+Filename'">
-                </div>
-                <div class="p-8 md:w-2/3 flex flex-col justify-center">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full uppercase">Business Solutions</span>
-                        <span class="text-slate-400 text-xs">March 11, 2026</span>
-                    </div>
-                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Reliable Copier Rental Services for Businesses in Metro Manila</h2>
-                    <p class="text-slate-600 mb-6 leading-relaxed">Looking for cost-effective office printing? Metro Speedcom offers premium Kyocera and Samsung copier rentals with fixed monthly rates and reliable technical support during office hours.</p>
-                    <div>
-                        <a href="/index.html#contact" class="inline-flex items-center gap-2 bg-blue-700 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-800 transition">
-                            Inquire Now <i class="fa-solid fa-arrow-right text-sm"></i>
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col md:flex-row hover:shadow-lg transition-all">
-                <div class="md:w-1/3 bg-slate-200">
-                    <img src="/images/uploads/warehouse-stock.jpg" 
-                         alt="Metro Speedcom Inventory" 
-                         class="w-full h-full object-cover min-h-[250px]"
-                         onerror="this.src='https://via.placeholder.com/600x400?text=Check+Image+Filename'">
-                </div>
-                <div class="p-8 md:w-2/3 flex flex-col justify-center">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full uppercase">Inventory Update</span>
-                        <span class="text-slate-400 text-xs">March 11, 2026</span>
-                    </div>
-                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Ready for Deployment: Our 2026 Fleet Expansion</h2>
-                    <p class="text-slate-600 mb-6 leading-relaxed">We have expanded our local stock of Kyocera TaskAlfa and Samsung heavy-duty machines. Ready for immediate delivery to BPOs and corporate offices in Makati, Ortigas, and Laguna.</p>
-                    <div>
-                        <a href="/index.html#contact" class="inline-flex items-center gap-2 bg-blue-700 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-800 transition">
-                            Check Availability <i class="fa-solid fa-arrow-right text-sm"></i>
-                        </a>
-                    </div>
-                </div>
-            </article>
-
+            <div id="loading-state" class="text-center py-20">
+                <i class="fa-solid fa-circle-notch fa-spin text-4xl text-blue-600 mb-4"></i>
+                <p class="text-slate-500 font-medium">Connecting to Metro Speedcom updates...</p>
+            </div>
         </div>
     </main>
     
@@ -78,15 +37,72 @@
     </footer>
 
     <script>
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-                if (!user) {
-                    window.netlifyIdentity.on("login", () => {
-                        document.location.href = "/admin/";
-                    });
+        // --- YOUR CORRECT GITHUB DETAILS ---
+        const GITHUB_USER = "mscjoana-ship-it"; 
+        const REPO_NAME = "metro-speedcom";             
+
+        async function fetchCMSPosts() {
+            const container = document.getElementById('posts-container');
+            const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/posts`;
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error("No posts found yet");
+                
+                const files = await response.json();
+                container.innerHTML = ''; // Clear loading spinner
+
+                // Filter for markdown files and sort them (newest first)
+                const mdFiles = files.filter(f => f.name.endsWith('.md')).reverse();
+
+                if (mdFiles.length === 0) throw new Error("No markdown files");
+
+                for (const file of mdFiles) {
+                    const contentRes = await fetch(file.download_url);
+                    const text = await contentRes.text();
+
+                    // Extracting CMS Data
+                    const title = text.match(/title: "(.*)"/)?.[1] || "Metro Speedcom Update";
+                    const desc = text.match(/description: "(.*)"/)?.[1] || "Click to read more about our latest services.";
+                    const img = text.match(/thumbnail: "(.*)"/)?.[1] || "";
+                    const dateRaw = text.match(/date: (.*)/)?.[1] || "";
+                    const date = dateRaw.split('T')[0] || "2026";
+
+                    container.innerHTML += `
+                        <article class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col md:flex-row hover:shadow-lg transition-all duration-300">
+                            <div class="md:w-1/3 bg-slate-100">
+                                <img src="${img}" alt="${title}" class="w-full h-full object-cover min-h-[250px]" onerror="this.src='https://via.placeholder.com/600x400?text=Metro+Speedcom+News'">
+                            </div>
+                            <div class="p-8 md:w-2/3 flex flex-col justify-center">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full uppercase">Solutions</span>
+                                    <span class="text-slate-400 text-xs">${date}</span>
+                                </div>
+                                <h2 class="text-2xl font-bold text-slate-900 mb-4">${title}</h2>
+                                <p class="text-slate-600 mb-6 leading-relaxed">${desc}</p>
+                                <div>
+                                    <a href="/index.html#contact" class="inline-flex items-center gap-2 bg-blue-700 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-800 transition">
+                                        Inquire Now <i class="fa-solid fa-arrow-right text-sm"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    `;
                 }
-            });
+            } catch (err) {
+                // If the /posts folder doesn't exist yet, show this
+                container.innerHTML = `
+                    <div class="text-center py-16 bg-white rounded-3xl border-2 border-dashed border-slate-200 px-6">
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">No Posts Yet</h3>
+                        <p class="text-slate-500 mb-6">Your blog is connected! Go to the Admin panel to publish your first update.</p>
+                        <a href="/admin/" class="bg-blue-700 text-white px-8 py-3 rounded-full font-bold hover:bg-blue-800 transition shadow-lg">
+                            Go to CMS Admin
+                        </a>
+                    </div>`;
+            }
         }
+
+        window.onload = fetchCMSPosts;
     </script>
 </body>
 </html>

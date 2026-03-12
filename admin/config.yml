@@ -9,7 +9,7 @@ public_folder: "/images/uploads"
 collections:
   - name: "blog"
     label: "Blog Posts"
-    folder: "posts" 
+    folder: "posts"
     create: true
     extension: "md"
     format: "frontmatter"

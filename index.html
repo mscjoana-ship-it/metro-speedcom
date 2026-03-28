@@ -19,7 +19,7 @@
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Metro Speedcom - Copier & IT Rentals",
-      "image": "https://metro-speedcom.netlify.app/logo.png",
+      "image": "https://metro-speedcom.netlify.app/logo.PNG",
       "url": "https://metro-speedcom.netlify.app/",
       "telephone": "+639972486777",
       "address": {
@@ -48,7 +48,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <img src="logo.png" alt="Metro Speedcom Logo" class="h-12 w-auto">
+                    <img src="logo.PNG" alt="Metro Speedcom Logo" class="h-12 w-auto">
                     <div>
                         <h1 class="font-bold text-xl tracking-tight text-slate-900 leading-none uppercase">METRO SPEEDCOM</h1>
                         <span class="text-xs text-blue-700 font-semibold tracking-wide uppercase">Copier & IT Rentals</span>
@@ -135,12 +135,11 @@
         <div class="max-w-7xl mx-auto px-4 text-center">
             <h2 class="text-3xl font-bold text-slate-900 mb-4">Latest Insights</h2>
             <p class="text-slate-600 mb-10">Tips and updates on office equipment efficiency.</p>
-            <div class="max-w-3xl mx-auto bg-slate-50 border border-slate-200 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row items-center gap-8">
-                <img src="copier-rental-metro-manila-kyocera-samsung-metro-speedcom.jpg.jpg" alt="Blog Preview" class="w-full md:w-48 h-32 object-cover rounded-xl shadow-sm">
-                <div class="text-left">
-                    <h3 class="text-xl font-bold text-slate-900 mb-2 leading-tight">Efficient Copier & IT Rentals: Powering B2B Operations</h3>
-                    <p class="text-slate-600 text-sm mb-4 line-clamp-2">Discover how our premium rental solutions streamline office operations across Metro Manila and Luzon.</p>
-                    <a href="blog.html" class="text-blue-700 font-bold hover:gap-3 transition-all inline-flex items-center">Read the Full Article <i class="fa-solid fa-arrow-right ml-2 text-sm"></i></a>
+            
+            <div id="home-insight-container" class="max-w-3xl mx-auto">
+                <div class="text-center py-10">
+                    <i class="fa-solid fa-circle-notch fa-spin text-2xl text-blue-600"></i>
+                    <p class="text-slate-400 mt-2 text-sm">Fetching latest news...</p>
                 </div>
             </div>
         </div>
@@ -194,6 +193,43 @@
     </div>
 
     <script>
+        // LATEST INSIGHT AUTOMATION
+        async function fetchLatestInsight() {
+            const container = document.getElementById('home-insight-container');
+            const apiUrl = `https://api.github.com/repos/mscjoana-ship-it/metro-speedcom/contents/posts?t=${new Date().getTime()}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const files = await response.json();
+                const newestFile = files.filter(f => f.name.endsWith('.md')).reverse()[0];
+
+                if (newestFile) {
+                    const contentRes = await fetch(newestFile.download_url);
+                    const text = await contentRes.text();
+
+                    const title = text.match(/title:\s*["']?(.*?)["']?$/m)?.[1] || "Metro Speedcom Update";
+                    const desc = text.match(/description:\s*["']?(.*?)["']?$/m)?.[1] || "Read our latest announcement.";
+                    const img = text.match(/thumbnail:\s*["']?(.*?)["']?$/m)?.[1] || "";
+
+                    container.innerHTML = `
+                        <div class="max-w-3xl mx-auto bg-slate-50 border border-slate-200 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row items-center gap-8 text-left">
+                            <img src="${img}" alt="Blog Preview" class="w-full md:w-48 h-32 object-cover rounded-xl shadow-sm" onerror="this.src='https://via.placeholder.com/400x300?text=Metro+Speedcom'">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 mb-2 leading-tight">${title}</h3>
+                                <p class="text-slate-600 text-sm mb-4 line-clamp-2">${desc}</p>
+                                <a href="blog.html" class="text-blue-700 font-bold hover:gap-3 transition-all inline-flex items-center">
+                                    Read the Full Article <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                                </a>
+                            </div>
+                        </div>`;
+                }
+            } catch (err) {
+                console.error("Home blog fetch error:", err);
+                container.innerHTML = ""; 
+            }
+        }
+
+        // NAVIGATION & MODAL LOGIC
         if (window.netlifyIdentity) {
             window.netlifyIdentity.on("init", user => {
                 if (!user) { window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; }); }
@@ -226,6 +262,9 @@
                 navbar.classList.remove('shadow-md');
             }
         });
+
+        // Initialize Fetch
+        fetchLatestInsight();
     </script>
 </body>
 </html>

@@ -10,7 +10,7 @@
 <body class="bg-slate-50 text-slate-900">
     <nav class="bg-white border-b py-4 px-6 flex justify-between items-center shadow-sm sticky top-0 z-50">
         <a href="/" class="flex items-center gap-2">
-            <img src="logo.PNG" alt="Logo" class="h-10">
+            <img src="/logo.PNG" alt="Logo" class="h-10" onerror="this.src='logo.png'">
             <span class="font-bold text-slate-800">METRO SPEEDCOM</span>
         </a>
         <a href="/" class="text-blue-700 font-semibold hover:underline">← Home</a>
@@ -23,7 +23,7 @@
 
     <main class="max-w-6xl mx-auto py-12 px-6">
         <div id="posts-container" class="grid gap-8">
-            <div class="text-center py-20" id="loading">
+            <div class="text-center py-20" id="loading-state">
                 <i class="fa-solid fa-circle-notch fa-spin text-4xl text-blue-600 mb-4"></i>
                 <p class="text-slate-500">Connecting to Metro Speedcom updates...</p>
             </div>
@@ -41,32 +41,47 @@
 
         async function fetchPosts() {
             const container = document.getElementById('posts-container');
-            // We look inside the 'posts' folder you defined in config.yml
-            const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/posts`;
+            
+            // Added timestamp to URL to prevent GitHub API caching issues
+            const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/posts?t=${new Date().getTime()}`;
 
             try {
                 const response = await fetch(apiUrl);
-                if (!response.ok) throw new Error("No posts folder found yet");
+                if (!response.ok) throw new Error("Posts folder not found");
                 
                 const files = await response.json();
-                container.innerHTML = ''; 
-
+                
+                // Filter only for Markdown files and sort them (newest first)
                 const mdFiles = files.filter(f => f.name.endsWith('.md')).reverse();
+
+                if (mdFiles.length === 0) {
+                    showEmptyState(container);
+                    return;
+                }
+
+                // Clear the loading spinner before adding posts
+                container.innerHTML = ''; 
 
                 for (const file of mdFiles) {
                     const contentRes = await fetch(file.download_url);
                     const text = await contentRes.text();
 
-                    // Regex to grab data between the quotes in your Markdown files
-                    const title = text.match(/title: "(.*)"/)?.[1] || "Metro Speedcom Update";
-                    const desc = text.match(/description: "(.*)"/)?.[1] || "";
-                    const img = text.match(/thumbnail: "(.*)"/)?.[1] || "";
-                    const date = text.match(/date: (.*)/)?.[1]?.split('T')[0] || "";
+                    // Smarter Regex: Handles "Quotes", 'Single Quotes', or No Quotes at all
+                    const titleMatch = text.match(/title:\s*["']?(.*?)["']?$/m);
+                    const descMatch = text.match(/description:\s*["']?(.*?)["']?$/m);
+                    const thumbMatch = text.match(/thumbnail:\s*["']?(.*?)["']?$/m);
+                    
+                    const title = titleMatch ? titleMatch[1] : "Metro Speedcom Update";
+                    const desc = descMatch ? descMatch[1] : "Read our latest announcement regarding copier and IT rentals.";
+                    const img = thumbMatch ? thumbMatch[1] : "";
+                    
+                    // Pulls date from the filename (YYYY-MM-DD)
+                    const date = file.name.substring(0, 10); 
 
                     container.innerHTML += `
                         <article class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col md:flex-row hover:shadow-lg transition-all">
                             <div class="md:w-1/3">
-                                <img src="${img}" class="w-full h-full object-cover min-h-[250px]" onerror="this.src='https://via.placeholder.com/600x400?text=Metro+Speedcom'">
+                                <img src="${img}" class="w-full h-full object-cover min-h-[250px]" onerror="this.src='https://via.placeholder.com/600x400?text=Metro+Speedcom+Insight'">
                             </div>
                             <div class="p-8 md:w-2/3 flex flex-col justify-center">
                                 <div class="flex items-center gap-2 mb-3">
@@ -83,13 +98,19 @@
                     `;
                 }
             } catch (err) {
-                container.innerHTML = `
-                    <div class="text-center py-16 bg-white rounded-xl border-2 border-dashed border-slate-200">
-                        <p class="text-slate-500 mb-4">Your blog is ready! Create your first post in the admin panel.</p>
-                        <a href="/admin/" class="bg-blue-700 text-white px-6 py-2 rounded-full font-bold">Go to Admin</a>
-                    </div>`;
+                console.error("Blog Fetch Error:", err);
+                showEmptyState(container);
             }
         }
+
+        function showEmptyState(container) {
+            container.innerHTML = `
+                <div class="text-center py-16 bg-white rounded-xl border-2 border-dashed border-slate-200">
+                    <p class="text-slate-500 mb-4">No published insights found yet.</p>
+                    <a href="/admin/" class="bg-blue-700 text-white px-6 py-2 rounded-full font-bold">Write Your First Post</a>
+                </div>`;
+        }
+
         window.onload = fetchPosts;
     </script>
 </body>

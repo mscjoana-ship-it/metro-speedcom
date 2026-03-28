@@ -11,7 +11,7 @@
     <nav class="bg-white border-b py-4 px-6 flex justify-between items-center shadow-sm sticky top-0 z-50">
         <a href="/" class="flex items-center gap-2">
             <img src="/logo.PNG" alt="Logo" class="h-10" onerror="this.src='logo.png'">
-            <span class="font-bold text-slate-800">METRO SPEEDCOM</span>
+            <span class="font-bold text-slate-800 uppercase">METRO SPEEDCOM</span>
         </a>
         <a href="/" class="text-blue-700 font-semibold hover:underline">← Home</a>
     </nav>
@@ -41,8 +41,6 @@
 
         async function fetchPosts() {
             const container = document.getElementById('posts-container');
-            
-            // Added timestamp to URL to prevent GitHub API caching issues
             const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/posts?t=${new Date().getTime()}`;
 
             try {
@@ -50,8 +48,6 @@
                 if (!response.ok) throw new Error("Posts folder not found");
                 
                 const files = await response.json();
-                
-                // Filter only for Markdown files and sort them (newest first)
                 const mdFiles = files.filter(f => f.name.endsWith('.md')).reverse();
 
                 if (mdFiles.length === 0) {
@@ -59,14 +55,12 @@
                     return;
                 }
 
-                // Clear the loading spinner before adding posts
                 container.innerHTML = ''; 
 
                 for (const file of mdFiles) {
                     const contentRes = await fetch(file.download_url);
                     const text = await contentRes.text();
 
-                    // Smarter Regex: Handles "Quotes", 'Single Quotes', or No Quotes at all
                     const titleMatch = text.match(/title:\s*["']?(.*?)["']?$/m);
                     const descMatch = text.match(/description:\s*["']?(.*?)["']?$/m);
                     const thumbMatch = text.match(/thumbnail:\s*["']?(.*?)["']?$/m);
@@ -74,8 +68,6 @@
                     const title = titleMatch ? titleMatch[1] : "Metro Speedcom Update";
                     const desc = descMatch ? descMatch[1] : "Read our latest announcement regarding copier and IT rentals.";
                     const img = thumbMatch ? thumbMatch[1] : "";
-                    
-                    // Pulls date from the filename (YYYY-MM-DD)
                     const date = file.name.substring(0, 10); 
 
                     container.innerHTML += `
@@ -90,8 +82,8 @@
                                 </div>
                                 <h2 class="text-2xl font-bold text-slate-900 mb-4">${title}</h2>
                                 <p class="text-slate-600 mb-6 leading-relaxed">${desc}</p>
-                                <a href="/index.html#contact" class="inline-flex items-center gap-2 bg-blue-700 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-800 transition">
-                                    Inquire Now <i class="fa-solid fa-arrow-right text-sm"></i>
+                                <a href="/article.html?post=${file.name}" class="inline-flex items-center gap-2 bg-blue-700 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-800 transition">
+                                    Read Full Article <i class="fa-solid fa-arrow-right text-sm"></i>
                                 </a>
                             </div>
                         </article>

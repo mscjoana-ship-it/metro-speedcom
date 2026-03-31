@@ -10,6 +10,8 @@
       gtag('config', 'G-GW40H9LMYZ');
     </script>
     
+    <meta name="p:domain_verify" content="5d244ddff31976690bafc7558a0ec939"/>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metro Speedcom - Copier & IT Rentals | Metro Manila & Tarlac</title>
@@ -193,7 +195,6 @@
     </div>
 
     <script>
-        // LATEST INSIGHT AUTOMATION
         async function fetchLatestInsight() {
             const container = document.getElementById('home-insight-container');
             const apiUrl = `https://api.github.com/repos/mscjoana-ship-it/metro-speedcom/contents/posts?t=${new Date().getTime()}`;
@@ -229,7 +230,6 @@
             }
         }
 
-        // NAVIGATION & MODAL LOGIC
         if (window.netlifyIdentity) {
             window.netlifyIdentity.on("init", user => {
                 if (!user) { window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; }); }
@@ -263,7 +263,6 @@
             }
         });
 
-        // Initialize Fetch
         fetchLatestInsight();
     </script>
 </body>

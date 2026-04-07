@@ -11,10 +11,31 @@
     </script>
     
     <meta name="p:domain_verify" content="5d244ddff31976690bafc7558a0ec939"/>
+    <link rel="canonical" href="https://metro-speedcom.netlify.app/" />
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metro Speedcom - Copier & IT Rentals | Metro Manila & Tarlac</title>
     
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Metro Speedcom - Copier & IT Rentals",
+      "image": "https://metro-speedcom.netlify.app/logo.PNG",
+      "url": "https://metro-speedcom.netlify.app/",
+      "telephone": "+639972486777",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Gilmore Avenue",
+        "addressLocality": "Quezon City",
+        "addressRegion": "Metro Manila",
+        "addressCountry": "PH"
+      },
+      "description": "Trusted provider of Samsung and Kyocera Copier Rentals, Laptops, and Desktops for offices and PEZA locators across Luzon."
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -26,13 +47,13 @@
 </head>
 <body class="bg-slate-50 text-slate-800">
 
-    <nav class="fixed w-full z-50 glass-effect border-b border-slate-200 shadow-sm" id="navbar">
+    <nav class="fixed w-full z-50 glass-effect border-b border-slate-200 shadow-sm transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
                     <img src="logo.PNG" alt="Metro Speedcom Logo" class="h-12 w-auto">
                     <div>
-                        <h1 class="font-bold text-xl tracking-tight text-slate-900 uppercase">METRO SPEEDCOM</h1>
+                        <h1 class="font-bold text-xl tracking-tight text-slate-900 leading-none uppercase">METRO SPEEDCOM</h1>
                         <span class="text-xs text-blue-700 font-semibold tracking-wide uppercase">Copier & IT Rentals</span>
                     </div>
                 </div>
@@ -40,17 +61,29 @@
                     <a href="#home" class="text-slate-600 hover:text-blue-700 font-medium">Home</a>
                     <a href="#about" class="text-slate-600 hover:text-blue-700 font-medium">About Us</a>
                     <a href="#rentals" class="text-slate-600 hover:text-blue-700 font-medium">Rentals</a>
-                    <a href="blog.html" class="text-slate-600 hover:text-blue-700 font-medium">Blog</a>
+                    <a href="blog.html" class="text-slate-600 hover:text-blue-700 font-medium underline decoration-blue-500/30">Blog</a>
                     <a href="#contact" class="px-5 py-2.5 bg-blue-700 text-white rounded-full hover:bg-blue-800 shadow-lg font-medium">Get a Quote</a>
                 </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-blue-700">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
             </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 absolute w-full px-4 py-6 space-y-4 shadow-lg">
+            <a href="#home" class="block text-slate-600 font-medium">Home</a>
+            <a href="#about" class="block text-slate-600 font-medium">About Us</a>
+            <a href="#rentals" class="block text-slate-600 font-medium">Rentals</a>
+            <a href="blog.html" class="block text-slate-600 font-medium">Blog</a>
+            <a href="#contact" class="block text-blue-700 font-bold">Get a Quote</a>
         </div>
     </nav>
 
     <section id="home" class="pt-32 pb-20 lg:pt-48 lg:pb-32 hero-pattern text-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center lg:text-left">
             <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-8">Copier & Laptop <br><span class="text-blue-400">Rentals Philippines</span></h1>
-            <p class="text-lg text-slate-300 mb-8 max-w-2xl">Trusted provider of Samsung and Kyocera copier rentals, laptops, and desktops for offices and PEZA locators.</p>
+            <p class="text-lg text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0">Trusted provider of Samsung and Kyocera copier rentals, laptops, and desktops for offices and PEZA locators.</p>
             <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
                 <a href="#rentals" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition">View Rental Plans</a>
                 <a href="#contact" class="px-8 py-4 bg-slate-800 border border-slate-700 rounded-lg font-semibold transition">Contact Us</a>
@@ -58,32 +91,10 @@
         </div>
     </section>
 
-    <section id="rentals" class="py-20 bg-slate-50 text-center">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-slate-900 mb-12">Equipment Rental Packages</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                    <img src="Kyocera-copier.png" alt="Kyocera" class="h-40 mx-auto mb-6">
-                    <h3 class="text-xl font-bold mb-4">Kyocera Copier</h3>
-                    <button onclick="openModal('Kyocera Copier Rental')" class="w-full py-3 bg-blue-600 text-white rounded-lg font-semibold">Inquire Now</button>
-                </div>
-                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                    <img src="Samsung-copier.png" alt="Samsung" class="h-40 mx-auto mb-6">
-                    <h3 class="text-xl font-bold mb-4">Samsung Copier</h3>
-                    <button onclick="openModal('Samsung Copier Rental')" class="w-full py-3 bg-blue-600 text-white rounded-lg font-semibold">Inquire Now</button>
-                </div>
-                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                    <img src="Laptop-and-desktop.png" alt="IT" class="h-40 mx-auto mb-6">
-                    <h3 class="text-xl font-bold mb-4">IT Equipment</h3>
-                    <button onclick="openModal('Laptop/Desktop Rental')" class="w-full py-3 bg-blue-600 text-white rounded-lg font-semibold">Inquire Now</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="py-20 bg-white border-t border-slate-100">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <h2 class="text-3xl font-bold text-slate-900 mb-4">Latest Insights</h2>
+            <p class="text-slate-600 mb-10">Tips and updates on office equipment efficiency.</p>
             <div id="home-insight-container" class="max-w-3xl mx-auto py-10">
                 <i class="fa-solid fa-circle-notch fa-spin text-2xl text-blue-600"></i>
             </div>
@@ -93,8 +104,8 @@
     <section id="contact" class="py-20 bg-slate-50 border-y border-slate-200">
         <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12">
             <div>
-                <h2 class="text-3xl font-bold mb-6 text-slate-900">Get In Touch</h2>
-                <div class="space-y-6">
+                <h2 class="text-3xl font-bold mb-6 text-slate-900 text-left">Get In Touch</h2>
+                <div class="space-y-6 text-left">
                     <div class="flex items-center gap-4">
                         <div class="bg-blue-100 p-3 rounded-full text-blue-600"><i class="fa-solid fa-phone"></i></div>
                         <p class="text-slate-700"><strong>Mobile:</strong> 0997-248-6777</p>
@@ -104,39 +115,21 @@
                         <p class="text-slate-700"><strong>Email:</strong> joana.metrospeedcom@gmail.com</p>
                     </div>
                     <div class="bg-blue-900 p-6 rounded-xl text-white">
-                        <p><i class="fa-solid fa-warehouse mr-2 text-blue-300"></i> <strong>Warehouse:</strong> Concepcion, Tarlac</p>
+                        <p><i class="fa-solid fa-warehouse mr-2 text-blue-300"></i> <strong>Warehouse:</strong> Concepcion, Tarlac (Central/Southern Luzon Hub)</p>
                     </div>
                 </div>
             </div>
-            <form action="https://formspree.io/f/mkgdkwag" method="POST" class="space-y-4 p-8 bg-white rounded-2xl shadow-sm border border-slate-200">
-                <input type="text" name="name" placeholder="Name" class="w-full p-3 rounded-lg border outline-none" required>
-                <input type="tel" name="phone" placeholder="Phone Number" class="w-full p-3 rounded-lg border outline-none" required>
-                <textarea name="message" placeholder="How can we help?" rows="4" class="w-full p-3 rounded-lg border outline-none" required></textarea>
-                <button type="submit" class="w-full py-4 bg-blue-700 text-white font-bold rounded-lg transition">Submit Inquiry</button>
+            <form action="https://formspree.io/f/mkgdkwag" method="POST" class="space-y-4 p-8 bg-white rounded-2xl border border-slate-200 shadow-sm text-left">
+                <input type="text" name="name" placeholder="Name" class="w-full p-3 rounded-lg border outline-none focus:ring-2 focus:ring-blue-500" required>
+                <input type="tel" name="phone" placeholder="Phone Number" class="w-full p-3 rounded-lg border outline-none focus:ring-2 focus:ring-blue-500" required>
+                <textarea name="message" placeholder="How can we help?" rows="4" class="w-full p-3 rounded-lg border outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                <button type="submit" class="w-full py-4 bg-blue-700 text-white font-bold rounded-lg shadow-lg hover:bg-blue-800 transition">Submit Inquiry</button>
             </form>
         </div>
     </section>
 
-    <footer class="bg-slate-900 text-slate-400 py-12 text-center">
-        <p class="mb-2 text-white font-bold uppercase tracking-widest">Metro Speedcom - Copier & IT Rentals</p>
-        <p>&copy; 2026. All rights reserved.</p>
-    </footer>
-
-    <div id="inquiryModal" class="fixed inset-0 z-[60] hidden flex items-center justify-center">
-        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeModal()"></div>
-        <div class="bg-white w-full max-w-lg rounded-2xl p-8 relative z-10 mx-4 shadow-2xl">
-            <h3 class="text-2xl font-bold mb-4 text-slate-900" id="modalTitle">Rental Inquiry</h3>
-            <form action="https://formspree.io/f/mkgdkwag" method="POST" class="space-y-4">
-                <input type="hidden" name="product" id="modalProductInput">
-                <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border rounded-lg outline-none" required>
-                <input type="tel" name="phone" placeholder="Mobile Number" class="w-full p-3 border rounded-lg outline-none" required>
-                <button class="w-full py-3 bg-blue-700 text-white font-bold rounded-lg">Send Inquiry</button>
-            </form>
-        </div>
-    </div>
-
     <script>
-        // FIXED BLOG FETCH
+        // FIXED SMART FETCH
         async function fetchLatestInsight() {
             const container = document.getElementById('home-insight-container');
             const apiUrl = `https://api.github.com/repos/mscjoana-ship-it/metro-speedcom/contents/posts?t=${new Date().getTime()}`;
@@ -148,33 +141,19 @@
                     const contentRes = await fetch(mdFiles[0].download_url);
                     const text = await contentRes.text();
                     const title = text.match(/title:\s*["']?(.*?)["']?$/m)?.[1] || "Update";
-                    const img = text.match(/thumbnail:\s*["']?(.*?)["']?$/m)?.[1] || "";
+                    const desc = text.match(/description:\s*["']?(.*?)["']?$/m)?.[1] || "Read our latest announcement.";
+                    const img = text.match(/thumbnail:\s*["']?(.*?)["']?$/m)?.[1] || "logo.PNG";
                     container.innerHTML = `
-                        <div class="bg-white border rounded-3xl p-6 flex flex-col md:flex-row items-center gap-6 text-left shadow-sm">
-                            <img src="${img}" class="w-full md:w-40 h-32 object-cover rounded-xl shadow-sm" onerror="this.src='/logo.PNG'">
-                            <div>
-                                <h3 class="text-xl font-bold mb-2">${title}</h3>
-                                <a href="blog.html" class="text-blue-700 font-bold inline-flex items-center">Read Full Article <i class="fa-solid fa-arrow-right ml-2"></i></a>
+                        <div class="max-w-3xl mx-auto bg-white border border-slate-200 rounded-3xl p-6 md:p-8 hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row items-center gap-8 text-left">
+                            <img src="${img}" class="w-full md:w-48 h-32 object-cover rounded-xl shadow-sm" onerror="this.src='logo.PNG'">
+                            <div class="flex-1">
+                                <h3 class="text-xl font-bold text-slate-900 mb-2 leading-tight">${title}</h3>
+                                <p class="text-slate-600 text-sm mb-4 line-clamp-2">${desc}</p>
+                                <a href="blog.html" class="text-blue-700 font-bold hover:gap-3 transition-all inline-flex items-center">
+                                    Read full Article <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                                </a>
                             </div>
                         </div>`;
                 }
             } catch (err) { container.innerHTML = ""; }
         }
-
-        // IDENTITY & UI LOGIC
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-                if (!user) { window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; }); }
-            });
-        }
-        function openModal(name) {
-            document.getElementById('modalProductInput').value = name;
-            document.getElementById('modalTitle').innerText = 'Inquire: ' + name;
-            document.getElementById('inquiryModal').classList.remove('hidden');
-        }
-        function closeModal() { document.getElementById('inquiryModal').classList.add('hidden'); }
-        
-        fetchLatestInsight();
-    </script>
-</body>
-</html>

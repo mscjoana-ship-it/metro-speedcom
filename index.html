@@ -1,7 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!-- ITEM #2 FIX: Added defer to Netlify Identity and ensured GTM is async -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GW40H9LMYZ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -24,6 +26,43 @@
         .hero-pattern { background-color: #0f172a; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
         .glass-effect { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
     </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Metro Speedcom",
+      "image": "https://metro-speedcom.netlify.app/logo.PNG",
+      "@id": "https://metro-speedcom.netlify.app/",
+      "url": "https://metro-speedcom.netlify.app/",
+      "telephone": "0997-248-6777",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "3F CGI Bldg. #25 Gilmore Ave, cor Aurora Blvd, New Manila",
+        "addressLocality": "Quezon City",
+        "postalCode": "1112",
+        "addressCountry": "PH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 14.6151,
+        "longitude": 121.0319
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    }
+    </script>
 </head>
 <body class="bg-slate-50 text-slate-800">
     <nav class="fixed w-full z-50 glass-effect border-b border-slate-200 shadow-sm transition-all duration-300" id="navbar">
@@ -224,7 +263,6 @@
                         <div class="bg-blue-100 p-3 rounded-full text-blue-600"><i class="fa-solid fa-envelope"></i></div>
                         <p class="text-slate-700"><strong>Email:</strong> joana.metrospeedcom@gmail.com</p>
                     </div>
-                    
                     <!-- BUSINESS HOURS -->
                     <div class="flex items-center gap-4">
                         <div class="bg-blue-100 p-3 rounded-full text-blue-600"><i class="fa-solid fa-clock"></i></div>
@@ -233,7 +271,6 @@
                             <p class="text-slate-700 text-sm">Mon to Sat: 9:00 AM - 6:00 PM | Sun: Closed</p>
                         </div>
                     </div>
-
                     <div class="flex items-start gap-4">
                         <div class="bg-blue-100 p-3 rounded-full text-blue-600 mt-1"><i class="fa-solid fa-building"></i></div>
                         <div>
@@ -285,7 +322,6 @@
         </div>
     </section>
 
-    <!-- GOOGLE MAPS SECTION -->
     <section class="py-12 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid md:grid-cols-2 gap-8">
@@ -294,10 +330,7 @@
                         <i class="fa-solid fa-location-dot text-blue-600"></i> Main Office - Quezon City
                     </h3>
                     <div class="rounded-2xl overflow-hidden shadow-md border border-slate-200 h-64">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.9130773634123!2d121.03159937584594!3d14.603953476997424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c82de95c8077%3A0x6794d4d60e796048!2sCGI%20Building!5e0!3m2!1sen!2sph!4v1713430000000!5m2!1sen!2sph" 
-                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
+                        <iframe                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.9130773634123!2d121.03159937584594!3d14.603953476997424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c82de95c8077%3A0x6794d4d60e796048!2sCGI%20Building!5e0!3m2!1sen!2sph!4v1713430000000!5m2!1sen!2sph"                             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">                        </iframe>
                     </div>
                 </div>
                 <div class="space-y-4">
@@ -305,10 +338,7 @@
                         <i class="fa-solid fa-warehouse text-blue-600"></i> Logistics Hub - Tarlac
                     </h3>
                     <div class="rounded-2xl overflow-hidden shadow-md border border-slate-200 h-64">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3848.2435777838563!2d120.64778107585806!3d15.309062359333333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3396ef97f7400001%3A0x0!2zMTXCsDE4JzMyLjYiTiAxMjDCsDM5JzAwLjMiRQ!5e0!3m2!1sen!2sph!4v1713431000000!5m2!1sen!2sph" 
-                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
+                        <iframe                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3848.2435777838563!2d120.64778107585806!3d15.309062359333333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3396ef97f7400001%3A0x0!2zMTXCsDE4JzMyLjYiTiAxMjDCsDM5JzAwLjMiRQ!5e0!3m2!1sen!2sph!4v1713431000000!5m2!1sen!2sph"                             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">                        </iframe>
                     </div>
                 </div>
             </div>

@@ -1,8 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <!-- ITEM #2 FIX: Added defer to Netlify Identity and ensured GTM is async -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GW40H9LMYZ"></script>
     <script>
@@ -18,10 +16,16 @@
     <title>Metro Speedcom - Copier & IT Rentals | Metro Manila & Tarlac</title>
     <meta name="description" content="Metro Speedcom is a trusted provider of Kyocera and Samsung copier rentals, laptops, and desktops for offices and PEZA companies in Metro Manila and Tarlac.">
     <meta name="keywords" content="Copier Rental Philippines, Kyocera Copier Rental, Samsung Copier Rental, Laptop Rental Manila, Desktop Rental, PEZA Office Equipment, Metro Speedcom Tarlac">
+    
+    <!-- FONT PRELOAD -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
         .hero-pattern { background-color: #0f172a; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
         .glass-effect { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
@@ -33,7 +37,6 @@
       "@type": "LocalBusiness",
       "name": "Metro Speedcom",
       "image": "https://metro-speedcom.netlify.app/logo.PNG",
-      "@id": "https://metro-speedcom.netlify.app/",
       "url": "https://metro-speedcom.netlify.app/",
       "telephone": "0997-248-6777",
       "address": {
@@ -42,24 +45,6 @@
         "addressLocality": "Quezon City",
         "postalCode": "1112",
         "addressCountry": "PH"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 14.6151,
-        "longitude": 121.0319
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday"
-        ],
-        "opens": "09:00",
-        "closes": "18:00"
       }
     }
     </script>
@@ -76,10 +61,10 @@
                     </div>
                 </div>
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#home" class="text-slate-600 hover:text-blue-700 font-medium transition">Home</a>
-                    <a href="#about" class="text-slate-600 hover:text-blue-700 font-medium transition">About Us</a>
-                    <a href="#rentals" class="text-slate-600 hover:text-blue-700 font-medium transition">Rentals</a>
-                    <a href="#leasing-plans" class="text-slate-600 hover:text-blue-700 font-medium transition">Leasing Plans</a>
+                    <a href="#home" class="text-slate-600 hover:text-blue-700 font-medium">Home</a>
+                    <a href="#about" class="text-slate-600 hover:text-blue-700 font-medium">About Us</a>
+                    <a href="#rentals" class="text-slate-600 hover:text-blue-700 font-medium">Rentals</a>
+                    <a href="#leasing-plans" class="text-slate-600 hover:text-blue-700 font-medium">Leasing Plans</a>
                     <a class='text-slate-600 hover:text-blue-700 font-medium transition underline decoration-blue-500/30' href='/blog'>Blog</a>
                     <a href="#contact" class="px-5 py-2.5 bg-blue-700 text-white rounded-full hover:bg-blue-800 shadow-lg font-medium">Get a Quote</a>
                 </div>
@@ -109,13 +94,10 @@
                     <p class="text-lg text-slate-600 mb-6 leading-relaxed">
                         Metro Speedcom is a leading provider of <strong>copier rentals, laptop rentals, and desktop rentals</strong> in the Philippines. We help businesses reduce operational costs through reliable, cost-efficient solutions tailored for corporations, startups, schools, and <strong>PEZA-registered companies</strong>.
                     </p>
-                    <p class="text-slate-600 mb-8 leading-relaxed">
-                        We specialize in <strong>Kyocera and Samsung multifunction copier rentals</strong> with flexible plans designed to support daily operations. Our services include printing, scanning, copying, onsite technical support, and preventive maintenance to help you minimize downtime and improve productivity.
-                    </p>
                     <div class="bg-blue-50 p-6 rounded-2xl border-l-4 border-blue-600 shadow-sm">
                         <h4 class="font-bold text-slate-900 mb-2">Strategically Located to Serve You</h4>
                         <p class="text-sm text-slate-600 leading-relaxed">
-                            With our main office in <strong>Quezon City</strong> and a dedicated warehouse in <strong>Concepcion, Tarlac</strong>, we efficiently serve clients across <strong>Metro Manila, Central Luzon</strong>, and nearby provinces with fast delivery and responsive service support.
+                            With our main office in <strong>Quezon City</strong> and a dedicated warehouse in <strong>Concepcion, Tarlac</strong>, we efficiently serve clients across <strong>Metro Manila, Central Luzon</strong>, and nearby provinces.
                         </p>
                     </div>
                 </div>
@@ -125,28 +107,28 @@
                             <i class="fa-solid fa-coins"></i>
                         </div>
                         <h3 class="font-bold text-slate-900 mb-2">No Large Capital Outlay</h3>
-                        <p class="text-xs text-slate-500">Preserve your cash flow. Optimize operations without the heavy cost of purchasing high-end equipment.</p>
+                        <p class="text-xs text-slate-600">Preserve your cash flow. Optimize operations without the heavy cost of purchasing high-end equipment.</p>
                     </div>
                     <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm">
                         <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center mb-4 text-xl">
                             <i class="fa-solid fa-gears"></i>
                         </div>
                         <h3 class="font-bold text-slate-900 mb-2">Service Excellence</h3>
-                        <p class="text-xs text-slate-500">Onsite technical support and preventive maintenance are included in all our rental packages.</p>
+                        <p class="text-xs text-slate-600">Onsite technical support and preventive maintenance are included in all our rental packages.</p>
                     </div>
                     <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm">
                         <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center mb-4 text-xl">
                             <i class="fa-solid fa-handshake"></i>
                         </div>
                         <h3 class="font-bold text-slate-900 mb-2">Flexible Plans</h3>
-                        <p class="text-xs text-slate-500">Customized rental options to fit the specific needs of startups and large PEZA-registered enterprises.</p>
+                        <p class="text-xs text-slate-600">Customized rental options to fit the specific needs of startups and large PEZA-registered enterprises.</p>
                     </div>
                     <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm">
                         <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center mb-4 text-xl">
                             <i class="fa-solid fa-truck-fast"></i>
                         </div>
                         <h3 class="font-bold text-slate-900 mb-2">Fast Logistics</h3>
-                        <p class="text-xs text-slate-500">Rapid deployment from our Tarlac warehouse to Metro Manila, CALABARZON, and Northern Luzon.</p>
+                        <p class="text-xs text-slate-600">Rapid deployment from our Tarlac warehouse to Metro Manila, CALABARZON, and Northern Luzon.</p>
                     </div>
                 </div>
             </div>
@@ -185,7 +167,7 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="border border-slate-200 rounded-2xl p-6 flex flex-col hover:border-blue-500 transition-colors">
                     <h4 class="text-lg font-bold text-blue-700 mb-2">Per Consumables Plan</h4>
-                    <p class="text-xs font-bold text-slate-400 uppercase mb-4 tracking-wider">No Monthly Rental Fee</p>
+                    <p class="text-xs font-bold text-slate-600 uppercase mb-4 tracking-wider">No Monthly Rental Fee</p>
                     <p class="text-sm text-slate-600 mb-6 flex-grow">A cost-efficient option for businesses that want to use the machine without a monthly rental charge.</p>
                     <ul class="text-left space-y-3 mb-8 text-sm text-slate-700 border-t pt-6 border-slate-100">
                         <li><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i> Free use of machine</li>
@@ -196,7 +178,7 @@
                 </div>
                 <div class="border border-slate-200 rounded-2xl p-6 flex flex-col hover:border-blue-500 transition-colors">
                     <h4 class="text-lg font-bold text-blue-700 mb-2">Flexible Plan</h4>
-                    <p class="text-xs font-bold text-slate-400 uppercase mb-4 tracking-wider">Low Monthly + Consumables</p>
+                    <p class="text-xs font-bold text-slate-600 uppercase mb-4 tracking-wider">Low Monthly + Consumables</p>
                     <p class="text-sm text-slate-600 mb-6 flex-grow">Ideal for businesses that prefer predictable access while purchasing supplies only when necessary.</p>
                     <ul class="text-left space-y-3 mb-8 text-sm text-slate-700 border-t pt-6 border-slate-100">
                         <li><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i> Fixed monthly rental</li>
@@ -219,7 +201,7 @@
                 </div>
                 <div class="border border-slate-200 rounded-2xl p-6 flex flex-col hover:border-blue-500 transition-colors">
                     <h4 class="text-lg font-bold text-blue-700 mb-2">Quota-Based Plan</h4>
-                    <p class="text-xs font-bold text-slate-400 uppercase mb-4 tracking-wider">Fixed Monthly Allocation</p>
+                    <p class="text-xs font-bold text-slate-600 uppercase mb-4 tracking-wider">Fixed Monthly Allocation</p>
                     <p class="text-sm text-slate-600 mb-6 flex-grow">Designed for companies with consistent monthly volume and controlled printing costs.</p>
                     <ul class="text-left space-y-3 mb-8 text-sm text-slate-700 border-t pt-6 border-slate-100">
                         <li><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i> Monthly print quota</li>
@@ -227,15 +209,6 @@
                         <li><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i> Consumables provided</li>
                     </ul>
                     <a href="#contact" class="block text-center py-2 bg-slate-900 text-white rounded-lg font-bold text-sm">Inquire Now</a>
-                </div>
-            </div>
-            <div class="mt-12 bg-slate-900 rounded-2xl p-6 text-white text-center">
-                <h5 class="text-sm font-bold uppercase tracking-widest text-blue-400 mb-4">Included in All Plans</h5>
-                <div class="flex flex-wrap justify-center gap-8 text-sm font-medium">
-                    <span class="flex items-center gap-2"><i class="fa-solid fa-check-double text-blue-400"></i> Unlimited Scanning</span>
-                    <span class="flex items-center gap-2"><i class="fa-solid fa-check-double text-blue-400"></i> Onsite Service & Maintenance</span>
-                    <span class="flex items-center gap-2"><i class="fa-solid fa-check-double text-blue-400"></i> Technical Support</span>
-                    <span class="flex items-center gap-2"><i class="fa-solid fa-check-double text-blue-400"></i> Reliable Business Solutions</span>
                 </div>
             </div>
         </div>
@@ -263,7 +236,6 @@
                         <div class="bg-blue-100 p-3 rounded-full text-blue-600"><i class="fa-solid fa-envelope"></i></div>
                         <p class="text-slate-700"><strong>Email:</strong> joana.metrospeedcom@gmail.com</p>
                     </div>
-                    <!-- BUSINESS HOURS -->
                     <div class="flex items-center gap-4">
                         <div class="bg-blue-100 p-3 rounded-full text-blue-600"><i class="fa-solid fa-clock"></i></div>
                         <div>
@@ -283,29 +255,29 @@
             <form action="https://formspree.io/f/mkgdkwag" method="POST" class="space-y-4 p-8 bg-white rounded-2xl shadow-lg border border-slate-200 text-left">
                 <div>
                     <label class="text-xs font-bold text-slate-500 uppercase ml-1">Name</label>
-                    <input type="text" name="name" placeholder="Your Name" class="w-full p-3 rounded-lg border outline-none focus:ring-2 focus:ring-blue-500" required>
+                    <input type="text" name="name" placeholder="Your Name" class="w-full p-3 rounded-lg border outline-none" required>
                 </div>
                 <div>
                     <label class="text-xs font-bold text-slate-500 uppercase ml-1">Company Name</label>
-                    <input type="text" name="company" placeholder="Business Name" class="w-full p-3 rounded-lg border outline-none focus:ring-2 focus:ring-blue-500" required>
+                    <input type="text" name="company" placeholder="Business Name" class="w-full p-3 rounded-lg border outline-none" required>
                 </div>
                 <div>
                     <label class="text-xs font-bold text-slate-500 uppercase ml-1">Location</label>
-                    <input type="text" name="location" placeholder="City / Province" class="w-full p-3 rounded-lg border outline-none focus:ring-2 focus:ring-blue-500" required>
+                    <input type="text" name="location" placeholder="City / Province" class="w-full p-3 rounded-lg border outline-none" required>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="text-xs font-bold text-slate-500 uppercase ml-1">Contact Number</label>
-                        <input type="tel" name="phone" placeholder="Mobile #" class="w-full p-3 rounded-lg border outline-none focus:ring-2 focus:ring-blue-500" required>
+                        <input type="tel" name="phone" placeholder="Mobile #" class="w-full p-3 rounded-lg border outline-none" required>
                     </div>
                     <div>
                         <label class="text-xs font-bold text-slate-500 uppercase ml-1">Email</label>
-                        <input type="email" name="email" placeholder="Email Address" class="w-full p-3 rounded-lg border outline-none focus:ring-2 focus:ring-blue-500" required>
+                        <input type="email" name="email" placeholder="Email Address" class="w-full p-3 rounded-lg border outline-none" required>
                     </div>
                 </div>
                 <div>
                     <label class="text-xs font-bold text-slate-500 uppercase ml-1">Product Inquiring For:</label>
-                    <select name="product" class="w-full p-3 rounded-lg border outline-none focus:ring-2 focus:ring-blue-500 bg-white" required>
+                    <select name="product" class="w-full p-3 rounded-lg border outline-none bg-white" required>
                         <option value="" disabled selected>Select an option</option>
                         <option value="Printer Rentals">Printer Rentals</option>
                         <option value="Desktop | Laptop Rentals">Desktop | Laptop Rentals</option>
@@ -315,9 +287,9 @@
                 </div>
                 <div>
                     <label class="text-xs font-bold text-slate-500 uppercase ml-1">Message (Optional)</label>
-                    <textarea name="message" placeholder="How can we help?" rows="3" class="w-full p-3 rounded-lg border outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    <textarea name="message" placeholder="How can we help?" rows="3" class="w-full p-3 rounded-lg border outline-none"></textarea>
                 </div>
-                <button type="submit" class="w-full py-4 bg-blue-700 text-white font-bold rounded-lg transition hover:bg-blue-800 shadow-md">Submit Inquiry</button>
+                <button type="submit" class="w-full py-4 bg-blue-700 text-white font-bold rounded-lg shadow-md">Submit Inquiry</button>
             </form>
         </div>
     </section>
@@ -325,20 +297,20 @@
     <section class="py-12 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="space-y-4">
+                <div class="space-y-4 text-left">
                     <h3 class="font-bold text-slate-900 flex items-center gap-2">
                         <i class="fa-solid fa-location-dot text-blue-600"></i> Main Office - Quezon City
                     </h3>
                     <div class="rounded-2xl overflow-hidden shadow-md border border-slate-200 h-64">
-                        <iframe                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.9130773634123!2d121.03159937584594!3d14.603953476997424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c82de95c8077%3A0x6794d4d60e796048!2sCGI%20Building!5e0!3m2!1sen!2sph!4v1713430000000!5m2!1sen!2sph"                             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">                        </iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.9130773634123!2d121.03159937584594!3d14.603953476997424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c82de95c8077%3A0x6794d4d60e796048!2sCGI%20Building!5e0!3m2!1sen!2sph!4v1713430000000!5m2!1sen!2sph" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
-                <div class="space-y-4">
+                <div class="space-y-4 text-left">
                     <h3 class="font-bold text-slate-900 flex items-center gap-2">
                         <i class="fa-solid fa-warehouse text-blue-600"></i> Logistics Hub - Tarlac
                     </h3>
                     <div class="rounded-2xl overflow-hidden shadow-md border border-slate-200 h-64">
-                        <iframe                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3848.2435777838563!2d120.64778107585806!3d15.309062359333333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3396ef97f7400001%3A0x0!2zMTXCsDE4JzMyLjYiTiAxMjDCsDM5JzAwLjMiRQ!5e0!3m2!1sen!2sph!4v1713431000000!5m2!1sen!2sph"                             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">                        </iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3848.2435777838563!2d120.64778107585806!3d15.309062359333333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3396ef97f7400001%3A0x0!2zMTXCsDE4JzMyLjYiTiAxMjDCsDM5JzAwLjMiRQ!5e0!3m2!1sen!2sph!4v1713431000000!5m2!1sen!2sph" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
@@ -350,24 +322,24 @@
         <p class="text-xs">&copy; 2026. All rights reserved.</p>
     </footer>
 
-    <div id="inquiryModal" class="fixed inset-0 z-[60] hidden flex items-center justify-center">
+    <!-- RESTORED MODAL WITH ORIGINAL LOGIC -->
+    <div id="inquiryModal" class="fixed inset-0 z-[60] hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeModal()"></div>
-        <div class="bg-white w-full max-w-lg rounded-2xl p-8 relative z-10 mx-4 shadow-2xl overflow-y-auto max-h-[90vh]">
+        <div class="bg-white w-full max-w-lg rounded-2xl p-8 relative z-10 shadow-2xl overflow-y-auto max-h-[90vh]">
             <h3 class="text-2xl font-bold mb-2 text-slate-900" id="modalTitle">Rental Inquiry</h3>
-            <p id="modalDescription" class="text-sm text-slate-600 mb-6"></p>
+            <p id="modalDescription" class="text-sm text-slate-600 mb-6"></p>            
             <form action="https://formspree.io/f/mkgdkwag" method="POST" class="space-y-4 text-left" id="modalForm">
-                <input type="hidden" name="product" id="modalProductInput">
+                <input type="hidden" name="product" id="modalProductInput">                
                 <div class="grid grid-cols-2 gap-4">
-                    <input type="text" name="name" placeholder="Contact Person" class="w-full p-3 border rounded-lg outline-none" required>
-                    <input type="text" name="company" placeholder="Company Name" class="w-full p-3 border rounded-lg outline-none" required>
+                    <input type="text" name="name" placeholder="Contact Person" class="w-full p-3 border rounded-lg" required>
+                    <input type="text" name="company" placeholder="Company Name" class="w-full p-3 border rounded-lg" required>
                 </div>
                 <div id="dynamicFields" class="space-y-4"></div>
                 <div class="grid grid-cols-2 gap-4">
-                    <input type="tel" name="phone" placeholder="Mobile Number" class="w-full p-3 border rounded-lg outline-none" required>
-                    <input type="email" name="email" placeholder="Email Address" class="w-full p-3 border rounded-lg outline-none" required>
-                </div>
+                    <input type="tel" name="phone" placeholder="Mobile Number" class="w-full p-3 border rounded-lg" required>
+                    <input type="email" name="email" placeholder="Email Address" class="w-full p-3 border rounded-lg" required>
+                </div>                
                 <button class="w-full py-3 bg-blue-700 text-white font-bold rounded-lg hover:bg-blue-800 transition">Submit Inquiry</button>
-                <p class="text-[10px] text-center text-slate-400 mt-4 italic">Our team will review your requirements and send a quotation as soon as possible.</p>
             </form>
         </div>
     </div>
@@ -388,17 +360,18 @@
                     const img = text.match(/thumbnail:\s*["']?(.*?)["']?$/m)?.[1] || "logo.PNG";
                     container.innerHTML = `
                         <div class="bg-white border rounded-3xl p-6 flex flex-col md:flex-row items-center gap-6 text-left shadow-sm">
-                            <img src="${img}" class="w-full md:w-40 h-32 object-cover rounded-xl shadow-sm" onerror="this.src='logo.PNG'">
+                            <img src="${img}" class="w-full md:w-40 h-32 object-cover rounded-xl" onerror="this.src='logo.PNG'">
                             <div class="flex-1">
                                 <h3 class="text-xl font-bold mb-2">${title}</h3>
                                 <p class="text-slate-600 text-sm mb-4 line-clamp-2">${desc}</p>
-                                <a href="blog.html" class="text-blue-700 font-bold inline-flex items-center hover:gap-2 transition-all">Read Full Article <i class="fa-solid fa-arrow-right ml-2"></i></a>
+                                <a href="blog.html" class="text-blue-700 font-bold inline-flex items-center">Read Full Article <i class="fa-solid fa-arrow-right ml-2"></i></a>
                             </div>
                         </div>`;
                 }
             } catch (err) { container.innerHTML = ""; }
         }
 
+        // ORIGINAL MODAL LOGIC RESTORED
         function openModal(name) {
             const modal = document.getElementById('inquiryModal');
             const title = document.getElementById('modalTitle');
@@ -407,51 +380,47 @@
             const productInput = document.getElementById('modalProductInput');
 
             productInput.value = name;
-            dynamicFields.innerHTML = '';
+            dynamicFields.innerHTML = '';                         
             if (name === 'IT Equipment Rental') {
                 title.innerText = 'IT Equipment Quotation';
                 desc.innerText = 'To help us prepare an accurate quotation quickly, please provide the following details:';
                 dynamicFields.innerHTML = `
                     <div class="grid grid-cols-2 gap-4">
-                        <select name="device_type" class="w-full p-3 border rounded-lg bg-white outline-none" required>
+                        <select name="device_type" class="w-full p-3 border rounded-lg bg-white" required>
                             <option value="" disabled selected>Device Type</option>
                             <option value="Laptop">Laptop</option>
                             <option value="Desktop">Desktop</option>
                         </select>
-                        <input type="number" name="units" placeholder="Units (Min. 5)" min="5" class="w-full p-3 border rounded-lg outline-none" required>
+                        <input type="number" name="units" placeholder="Units (Min. 5)" min="5" class="w-full p-3 border rounded-lg" required>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
-                        <input type="text" name="duration" placeholder="Rental Duration" class="w-full p-3 border rounded-lg outline-none" required>
-                        <input type="text" name="location" placeholder="Delivery Location" class="w-full p-3 border rounded-lg outline-none" required>
+                        <input type="text" name="duration" placeholder="Rental Duration" class="w-full p-3 border rounded-lg" required>
+                        <input type="text" name="location" placeholder="Delivery Location" class="w-full p-3 border rounded-lg" required>
                     </div>
-                    <input type="text" name="start_date" placeholder="Preferred Start Date" class="w-full p-3 border rounded-lg outline-none" onfocus="(this.type='date')" required>
-                    <textarea name="specs" placeholder="Intended Usage or Preferred Specifications" rows="2" class="w-full p-3 border rounded-lg outline-none" required></textarea>
-                    <textarea name="accessories" placeholder="Required Accessories or Software (if any)" rows="2" class="w-full p-3 border rounded-lg outline-none"></textarea>
+                    <input type="text" name="start_date" placeholder="Preferred Start Date" class="w-full p-3 border rounded-lg" onfocus="(this.type='date')" required>
+                    <textarea name="specs" placeholder="Preferred Specifications" rows="2" class="w-full p-3 border rounded-lg" required></textarea>
                 `;
             } else {
                 title.innerText = 'Fast Copier Rental Quotation';
                 desc.innerText = 'To help us provide an accurate quotation quickly, please provide the following details:';
                 dynamicFields.innerHTML = `
-                    <input type="text" name="office_location" placeholder="Office Location" class="w-full p-3 border rounded-lg outline-none" required>
+                    <input type="text" name="office_location" placeholder="Office Location" class="w-full p-3 border rounded-lg" required>
                     <div class="grid grid-cols-2 gap-4">
-                        <input type="text" name="monthly_volume" placeholder="Estimated Monthly Print Volume" class="w-full p-3 border rounded-lg outline-none" required>
-                        <select name="printing_type" class="w-full p-3 border rounded-lg bg-white outline-none" required>
-                            <option value="" disabled selected>B&W or Color Printing</option>
+                        <input type="text" name="monthly_volume" placeholder="Monthly Print Volume" class="w-full p-3 border rounded-lg" required>
+                        <select name="printing_type" class="w-full p-3 border rounded-lg bg-white" required>
+                            <option value="" disabled selected>B&W or Color</option>
                             <option value="Black & White">Black & White</option>
                             <option value="Colored">Colored</option>
-                            <option value="Both">Both</option>
                         </select>
                     </div>
-                    <input type="text" name="functions" placeholder="Preferred Machine Functions (Print/Scan/Copy/Fax)" class="w-full p-3 border rounded-lg outline-none" required>
-                    <div class="grid grid-cols-1">
-                        <select name="paper_size" class="w-full p-3 border rounded-lg bg-white outline-none" required>
-                            <option value="" disabled selected>Paper Size Requirement</option>
-                            <option value="A4 / Legal">A4 / Legal</option>
-                            <option value="A3">A3</option>
-                            <option value="All Sizes">All (A4/Legal/A3)</option>
-                        </select>
-                    </div>
-                    <input type="text" name="installation_date" placeholder="Preferred Installation Date" class="w-full p-3 border rounded-lg outline-none" onfocus="(this.type='date')" required>
+                    <input type="text" name="functions" placeholder="Functions (Print/Scan/Copy)" class="w-full p-3 border rounded-lg" required>
+                    <select name="paper_size" class="w-full p-3 border rounded-lg bg-white" required>
+                        <option value="" disabled selected>Paper Size Requirement</option>
+                        <option value="A4 / Legal">A4 / Legal</option>
+                        <option value="A3">A3</option>
+                        <option value="All Sizes">All (A4/Legal/A3)</option>
+                    </select>
+                    <input type="text" name="installation_date" placeholder="Preferred Installation Date" class="w-full p-3 border rounded-lg" onfocus="(this.type='date')" required>
                 `;
             }
             modal.classList.remove('hidden');

@@ -51,15 +51,16 @@
             if (!postFile) { window.location.href = '/blog.html'; return; }
 
             try {
-                const response = await fetch(`https://api.github.com/repos/mscjoana-ship-it/metro-speedcom/contents/posts/${postFile}?t=${new Date().getTime()}`);
-                const data = await response.json();
+                // FIXED: Fetch directly from your live deployed folder instead of GitHub API
+                const response = await fetch(`/posts/${postFile}?t=${new Date().getTime()}`);
                 
-                // Securely decode Base64 content
-                const content = decodeURIComponent(escape(atob(data.content))); 
+                if (!response.ok) throw new Error("File could not be read from public directory");
+                
+                const content = await response.text();
 
                 // --- DATA CLEANING LOGIC ---
-                const titleMatch = content.match(/title:\s*["']?(.*?)["']?$/m);
-                const thumbMatch = content.match(/thumbnail:\s*["']?(.*?)["']?$/m);
+                const titleMatch = content.match(/^title:\s*["']?(.*?)["']?\s*\r?$/m);
+                const thumbMatch = content.match(/^thumbnail:\s*["']?(.*?)["']?\s*\r?$/m);
                 
                 const title = titleMatch ? titleMatch[1] : "Metro Speedcom Update";
                 const img = thumbMatch ? thumbMatch[1] : "";
@@ -99,7 +100,7 @@
                 container.innerHTML = `
                     <div class="text-center py-10">
                         <h2 class="text-2xl font-bold text-red-600">Article not found.</h2>
-                        <p class="mt-4 text-slate-600">This post may be unavailable at the moment.</p>
+                        <p class="mt-4 text-slate-600">This post may be unavailable at the moment or hasn't finished deploying.</p>
                         <a href="/blog.html" class="mt-6 inline-block text-blue-700 font-bold hover:underline">← Return to Blog</a>
                     </div>`;
             }

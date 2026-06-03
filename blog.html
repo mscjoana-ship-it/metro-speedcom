@@ -41,19 +41,19 @@
 
         async function fetchPosts() {
             const container = document.getElementById('posts-container');
-            // Cache buster included to see new posts instantly
+            // Cache buster included to pull fresh files instantly
             const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/posts?t=${new Date().getTime()}`;
 
             try {
                 const response = await fetch(apiUrl);
-                if (!response.ok) throw new Error("Posts folder not found");
+                if (!response.ok) throw new Error("Posts folder not found or API rate limited");
                 
                 const files = await response.json();
                 
-                // 1. Filter only .md files 
+                // 1. Filter only .md files (case-insensitive check)
                 // 2. Sort them NEWEST first (alphabetical reverse)
                 const mdFiles = files
-                    .filter(f => f.name.endsWith('.md'))
+                    .filter(f => f.name.toLowerCase().endsWith('.md'))
                     .sort((a, b) => b.name.localeCompare(a.name));
 
                 if (mdFiles.length === 0) {
@@ -67,19 +67,25 @@
                 for (const file of mdFiles) {
                     try {
                         const contentRes = await fetch(file.download_url);
+                        if (!contentRes.ok) continue; // Skip single broken files gracefully
+
                         const text = await contentRes.text();
 
-                        // Regex to grab Decap CMS fields
-                        const title = text.match(/title:\s*["']?(.*?)["']?$/m)?.[1] || "Metro Speedcom Update";
-                        const desc = text.match(/description:\s*["']?(.*?)["']?$/m)?.[1] || "Read our latest announcement regarding copier and IT rentals.";
-                        const img = text.match(/thumbnail:\s*["']?(.*?)["']?$/m)?.[1] || "";
+                        // Robust regex to capture standard Decap CMS structure safely across platforms
+                        const titleMatch = text.match(/^title:\s*["']?(.*?)["']?\s*\r?$/m);
+                        const descMatch = text.match(/^description:\s*["']?(.*?)["']?\s*\r?$/m);
+                        const thumbMatch = text.match(/^thumbnail:\s*["']?(.*?)["']?\s*\r?$/m);
                         
-                        // Extract date from filename (YYYY-MM-DD)
+                        const title = titleMatch ? titleMatch[1] : "Metro Speedcom Update";
+                        const desc = descMatch ? descMatch[1] : "Read our latest announcement regarding copier and IT rentals.";
+                        const img = thumbMatch ? thumbMatch[1] : "";
+                        
+                        // Extract date from filename prefix (YYYY-MM-DD)
                         const dateLabel = file.name.substring(0, 10); 
 
                         container.innerHTML += `
                             <article class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col md:flex-row hover:shadow-lg transition-all duration-300">
-                                <div class="md:w-1/3 overflow-hidden">
+                                <div class="md:w-1/3 overflow-hidden bg-slate-100 flex items-center justify-center">
                                     <img src="${img}" class="w-full h-full object-cover min-h-[200px] hover:scale-105 transition-transform duration-500" onerror="this.src='/logo.PNG'">
                                 </div>
                                 <div class="p-8 md:w-2/3 flex flex-col justify-center">
@@ -90,7 +96,7 @@
                                     <h2 class="text-2xl font-bold text-slate-900 mb-4 hover:text-blue-700 transition-colors">${title}</h2>
                                     <p class="text-slate-600 mb-6 leading-relaxed line-clamp-3">${desc}</p>
                                     <div>
-                                        <a href="/article.html?post=${file.name}" class="inline-flex items-center gap-2 bg-blue-700 text-white px-6 py-3 rounded-xl font-bold hover:bg-blue-800 transition shadow-md hover:shadow-blue-200">
+                                        <a href="/article.html?post=${encodeURIComponent(file.name)}" class="inline-flex items-center gap-2 bg-blue-700 text-white px-6 py-3 rounded-xl font-bold hover:bg-blue-800 transition shadow-md hover:shadow-blue-200">
                                             Read Full Article <i class="fa-solid fa-arrow-right text-sm"></i>
                                         </a>
                                     </div>
@@ -98,8 +104,7 @@
                             </article>
                         `;
                     } catch (fileErr) {
-                        console.error("Error skipping single file:", fileErr);
-                        // We skip individual bad files so the whole blog doesn't break
+                        console.error("Skipping single unreadable file configuration:", fileErr);
                     }
                 }
             } catch (err) {
@@ -112,14 +117,15 @@
             container.innerHTML = `
                 <div class="text-center py-20 bg-white rounded-3xl border-2 border-dashed border-slate-200">
                     <i class="fa-solid fa-box-open text-4xl text-slate-200 mb-4"></i>
-                    <p class="text-slate-500 mb-6 text-lg">No published insights found yet.</p>
+                    <p class="text-slate-500 mb-2 text-lg">No published insights found right now.</p>
+                    <p class="text-slate-400 text-sm mb-6">If you are working actively, you might have hit GitHub's hourly API rate limit.</p>
                     <a href="/admin/" class="inline-block bg-blue-700 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-blue-800 transition">
                         Write Your First Post
                     </a>
                 </div>`;
         }
 
-        // Run the fetch
+        // Run the fetch on load
         fetchPosts();
     </script>
 </body>

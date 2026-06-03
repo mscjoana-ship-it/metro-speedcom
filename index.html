@@ -17,7 +17,6 @@
     <meta name="description" content="Metro Speedcom is a trusted provider of Kyocera and Samsung copier rentals, laptops, and desktops for offices and PEZA companies in Metro Manila and Tarlac.">
     <meta name="keywords" content="Copier Rental Philippines, Kyocera Copier Rental, Samsung Copier Rental, Laptop Rental Manila, Desktop Rental, PEZA Office Equipment, Metro Speedcom Tarlac">
     
-    <!-- FONT PRELOAD -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -64,7 +63,7 @@
                     <a href="#about" class="text-slate-600 hover:text-blue-700 font-medium">About Us</a>
                     <a href="#rentals" class="text-slate-600 hover:text-blue-700 font-medium">Rentals</a>
                     <a href="#leasing-plans" class="text-slate-600 hover:text-blue-700 font-medium">Leasing Plans</a>
-                    <a class='text-slate-600 hover:text-blue-700 font-medium transition underline decoration-blue-500/30' href='/blog'>Blog</a>
+                    <a class='text-slate-600 hover:text-blue-700 font-medium transition underline decoration-blue-500/30' href='/blog.html'>Blog</a>
                     <a href="#contact" class="px-5 py-2.5 bg-blue-700 text-white rounded-full hover:bg-blue-800 shadow-lg font-medium">Get a Quote</a>
                 </div>
             </div>
@@ -212,7 +211,6 @@
                 </div>
             </div>
 
-            <!-- RESTORED BANNER COMPONENT -->
             <div class="mt-16 bg-slate-900 rounded-2xl p-6 md:p-8 text-white shadow-xl">
                 <p class="text-center text-[10px] font-bold uppercase tracking-[0.2em] text-blue-400 mb-6">Included in All Plans</p>
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-4">
@@ -342,10 +340,9 @@
 
     <footer class="bg-slate-900 text-slate-400 py-12 text-center">
         <p class="mb-2 text-white font-bold uppercase tracking-widest text-sm">Metro Speedcom - Copier & IT Rentals</p>
-        <p class="text-xs">&copy; 2026. All rights reserved.</p>
+        <p class="text-xs">© 2026. All rights reserved.</p>
     </footer>
 
-    <!-- MODAL BOXES: REMAINS UNCHANGED -->
     <div id="inquiryModal" class="fixed inset-0 z-[60] hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeModal()"></div>
         <div class="bg-white w-full max-w-lg rounded-2xl p-8 relative z-10 shadow-2xl overflow-y-auto max-h-[90vh]">
@@ -370,28 +367,69 @@
     <script>
         async function fetchLatestInsight() {
             const container = document.getElementById('home-insight-container');
-            const apiUrl = `https://api.github.com/repos/mscjoana-ship-it/metro-speedcom/contents/posts?t=${new Date().getTime()}`;
+            const GITHUB_USER = "mscjoana-ship-it"; 
+            const REPO_NAME = "metro-speedcom";   
+            const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/posts`;
+
             try {
                 const res = await fetch(apiUrl);
-                const files = await res.json();
-                const mdFiles = files.filter(f => f.name.endsWith('.md')).sort((a,b) => b.name.localeCompare(a.name));
+                let mdFiles = [];
+                
+                if (res.ok) {
+                    const files = await res.json();
+                    mdFiles = files
+                        .filter(f => f.name.toLowerCase().endsWith('.md'))
+                        .sort((a, b) => b.name.localeCompare(a.name));
+                } else {
+                    // PRIVATE REPO FALLBACK: Route directly through Netlify local static assets
+                    const hardcodedFiles = [
+                        "2026-03-11-reliable-copier-rental-services-for-businesses-in-metro-manila-peza-zones-1.md",
+                        "2026-03-11-reliable-copier-rental-services-for-businesses-in-metro-manila-peza-zones.md",
+                        "2026-02-06-efficient-copier-it-rentals.md"
+                    ];
+                    
+                    mdFiles = hardcodedFiles.map(name => ({
+                        name: name,
+                        download_url: `/posts/${name}?t=${new Date().getTime()}`
+                    }));
+                }
+
+                // Render the single most recent post inside the container layout
                 if (mdFiles[0]) {
                     const contentRes = await fetch(mdFiles[0].download_url);
+                    if (!contentRes.ok) throw new Error("Fallback file read failed");
+                    
                     const text = await contentRes.text();
-                    const title = text.match(/title:\s*["']?(.*?)["']?$/m)?.[1] || "Update";
-                    const desc = text.match(/description:\s*["']?(.*?)["']?$/m)?.[1] || "Latest news from Metro Speedcom.";
-                    const img = text.match(/thumbnail:\s*["']?(.*?)["']?$/m)?.[1] || "logo.PNG";
+                    
+                    // Fixed safe regex syntax for clean frontmatter parsing
+                    const titleMatch = text.match(/^title:\s*["']?(.*?)["']?\s*\r?$/m);
+                    const descMatch = text.match(/^description:\s*["']?(.*?)["']?\s*\r?$/m);
+                    const thumbMatch = text.match(/^thumbnail:\s*["']?(.*?)["']?\s*\r?$/m);
+
+                    const title = titleMatch ? titleMatch[1] : "Update";
+                    const desc = descMatch ? descMatch[1] : "Latest news from Metro Speedcom.";
+                    const img = thumbMatch ? thumbMatch[1] : "logo.PNG";
+
                     container.innerHTML = `
-                        <div class="bg-white border rounded-3xl p-6 flex flex-col md:flex-row items-center gap-6 text-left shadow-sm">
-                            <img src="${img}" class="w-full md:w-40 h-32 object-cover rounded-xl" onerror="this.src='logo.PNG'">
+                        <div class="bg-white border border-slate-200 rounded-3xl p-6 flex flex-col md:flex-row items-center gap-6 text-left shadow-sm hover:shadow-md transition-shadow duration-300">
+                            <div class="w-full md:w-40 h-32 overflow-hidden bg-slate-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <img src="${img}" class="w-full h-full object-cover" onerror="this.src='logo.PNG'">
+                            </div>
                             <div class="flex-1">
-                                <h3 class="text-xl font-bold mb-2">${title}</h3>
+                                <h3 class="text-xl font-bold mb-2 text-slate-900">${title}</h3>
                                 <p class="text-slate-600 text-sm mb-4 line-clamp-2">${desc}</p>
-                                <a href="blog.html" class="text-blue-700 font-bold inline-flex items-center">Read Full Article <i class="fa-solid fa-arrow-right ml-2"></i></a>
+                                <a href="/article.html?post=${encodeURIComponent(mdFiles[0].name)}" class="text-blue-700 font-bold inline-flex items-center hover:text-blue-800 text-sm">
+                                    Read Full Article <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                                </a>
                             </div>
                         </div>`;
+                } else {
+                    container.innerHTML = "";
                 }
-            } catch (err) { container.innerHTML = ""; }
+            } catch (err) { 
+                console.error("Error displaying homepage insight badge:", err);
+                container.innerHTML = ""; 
+            }
         }
 
         function openModal(name) {
@@ -450,6 +488,8 @@
         }
 
         function closeModal() { document.getElementById('inquiryModal').classList.add('hidden'); }
+        
+        // Execute the function
         fetchLatestInsight();
     </script>
 </body>

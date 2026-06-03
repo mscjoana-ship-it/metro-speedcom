@@ -41,20 +41,31 @@
 
         async function fetchPosts() {
             const container = document.getElementById('posts-container');
-            // Cache buster included to pull fresh files instantly
-            const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/posts?t=${new Date().getTime()}`;
+            const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/posts`;
 
             try {
                 const response = await fetch(apiUrl);
-                if (!response.ok) throw new Error("Posts folder not found or API rate limited");
+                let mdFiles = [];
                 
-                const files = await response.json();
-                
-                // 1. Filter only .md files (case-insensitive check)
-                // 2. Sort them NEWEST first (alphabetical reverse)
-                const mdFiles = files
-                    .filter(f => f.name.toLowerCase().endsWith('.md'))
-                    .sort((a, b) => b.name.localeCompare(a.name));
+                if (response.ok) {
+                    // If the repository is ever made public or token-authorized
+                    const files = await response.json();
+                    mdFiles = files
+                        .filter(f => f.name.toLowerCase().endsWith('.md'))
+                        .sort((a, b) => b.name.localeCompare(a.name));
+                } else {
+                    // PRIVATE REPO FALLBACK: Read directly via Netlify routing using your exact filenames
+                    const hardcodedFiles = [
+                        "2026-03-11-reliable-copier-rental-services-for-businesses-in-metro-manila-peza-zones-1.md",
+                        "2026-03-11-reliable-copier-rental-services-for-businesses-in-metro-manila-peza-zones.md",
+                        "2026-02-06-efficient-copier-it-rentals.md"
+                    ];
+                    
+                    mdFiles = hardcodedFiles.map(name => ({
+                        name: name,
+                        download_url: `/posts/${name}?t=${new Date().getTime()}` // Cache buster included
+                    }));
+                }
 
                 if (mdFiles.length === 0) {
                     showEmptyState(container);
@@ -63,15 +74,15 @@
 
                 container.innerHTML = ''; 
 
-                // Process files
+                // Loop and render the files
                 for (const file of mdFiles) {
                     try {
                         const contentRes = await fetch(file.download_url);
-                        if (!contentRes.ok) continue; // Skip single broken files gracefully
+                        if (!contentRes.ok) continue; 
 
                         const text = await contentRes.text();
 
-                        // Robust regex to capture standard Decap CMS structure safely across platforms
+                        // Regex structures to capture parameters across formatting variations
                         const titleMatch = text.match(/^title:\s*["']?(.*?)["']?\s*\r?$/m);
                         const descMatch = text.match(/^description:\s*["']?(.*?)["']?\s*\r?$/m);
                         const thumbMatch = text.match(/^thumbnail:\s*["']?(.*?)["']?\s*\r?$/m);
@@ -80,7 +91,7 @@
                         const desc = descMatch ? descMatch[1] : "Read our latest announcement regarding copier and IT rentals.";
                         const img = thumbMatch ? thumbMatch[1] : "";
                         
-                        // Extract date from filename prefix (YYYY-MM-DD)
+                        // Grab date label from standard YYYY-MM-DD template prefix
                         const dateLabel = file.name.substring(0, 10); 
 
                         container.innerHTML += `
@@ -104,7 +115,7 @@
                             </article>
                         `;
                     } catch (fileErr) {
-                        console.error("Skipping single unreadable file configuration:", fileErr);
+                        console.error("Skipping single corrupted markdown file path:", fileErr);
                     }
                 }
             } catch (err) {
@@ -118,14 +129,14 @@
                 <div class="text-center py-20 bg-white rounded-3xl border-2 border-dashed border-slate-200">
                     <i class="fa-solid fa-box-open text-4xl text-slate-200 mb-4"></i>
                     <p class="text-slate-500 mb-2 text-lg">No published insights found right now.</p>
-                    <p class="text-slate-400 text-sm mb-6">If you are working actively, you might have hit GitHub's hourly API rate limit.</p>
+                    <p class="text-slate-400 text-sm mb-6">Make sure your markdown files are synchronized and built inside your site deploy folders.</p>
                     <a href="/admin/" class="inline-block bg-blue-700 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-blue-800 transition">
                         Write Your First Post
                     </a>
                 </div>`;
         }
 
-        // Run the fetch on load
+        // Run the fetch
         fetchPosts();
     </script>
 </body>

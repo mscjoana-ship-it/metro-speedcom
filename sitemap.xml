@@ -4,13 +4,21 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
+  <!-- Homepage -->
+  <url>
+    <loc>https://metro-speedcom.netlify.app/</loc>
+    <lastmod>2026-08-10T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
 
-<url>
-  <loc>https://metro-speedcom.netlify.app/</loc>
-  <lastmod>2025-12-16T08:21:43+00:00</lastmod>
-</url>
-
+  <!-- Blog Listing Page -->
+  <url>
+    <loc>https://metro-speedcom.netlify.app/blog</loc>
+    <lastmod>2026-08-10T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
 </urlset>

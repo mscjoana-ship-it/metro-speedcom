@@ -13,9 +13,11 @@
     <link rel="canonical" href="https://metro-speedcom.netlify.app/" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metro Speedcom - Copier & IT Rentals | Metro Manila & Tarlac</title>
-    <meta name="description" content="Metro Speedcom is a trusted provider of Kyocera and Samsung copier rentals, laptops, and desktops for offices and PEZA companies in Metro Manila and Tarlac.">
-    <meta name="keywords" content="Copier Rental Philippines, Kyocera Copier Rental, Samsung Copier Rental, Laptop Rental Manila, Desktop Rental, PEZA Office Equipment, Metro Speedcom Tarlac">
+
+    <!-- OPTIMIZED SEO TITLE & METAS -->
+    <title>Copier & Printer Rental Metro Manila | Metro Speedcom</title>
+    <meta name="description" content="Metro Speedcom offers Kyocera & Samsung copier rentals, printer leasing, laptops, and desktops for offices and PEZA companies in Metro Manila and Tarlac.">
+    <meta name="keywords" content="Copier Rental Philippines, Printer Rental Metro Manila, Kyocera Copier Rental, Samsung Copier Rental, Laptop Rental Manila, Desktop Rental, PEZA Office Equipment, Metro Speedcom Tarlac, Copier Machine Leasing Quezon City">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,6 +31,8 @@
         .hero-pattern { background-color: #0f172a; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
         .glass-effect { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
     </style>
+
+    <!-- ENHANCED LOCAL BUSINESS SCHEMA -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -37,13 +41,17 @@
       "image": "https://metro-speedcom.netlify.app/logo.PNG",
       "url": "https://metro-speedcom.netlify.app/",
       "telephone": "0997-248-6777",
+      "email": "joana.metrospeedcom@gmail.com",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "3F CGI Bldg. #25 Gilmore Ave, cor Aurora Blvd, New Manila",
         "addressLocality": "Quezon City",
+        "addressRegion": "Metro Manila",
         "postalCode": "1112",
         "addressCountry": "PH"
-      }
+      },
+      "areaServed": ["Metro Manila", "Quezon City", "Tarlac", "CALABARZON"],
+      "description": "Trusted provider of Kyocera and Samsung copier rentals, multi-function printer leasing, laptops, and IT equipment for corporate offices and PEZA locators."
     }
     </script>
 </head>
@@ -63,7 +71,7 @@
                     <a href="#about" class="text-slate-600 hover:text-blue-700 font-medium">About Us</a>
                     <a href="#rentals" class="text-slate-600 hover:text-blue-700 font-medium">Rentals</a>
                     <a href="#leasing-plans" class="text-slate-600 hover:text-blue-700 font-medium">Leasing Plans</a>
-                    <a class='text-slate-600 hover:text-blue-700 font-medium transition underline decoration-blue-500/30' href='/blog.html'>Blog</a>
+                    <a class='text-slate-600 hover:text-blue-700 font-medium transition underline decoration-blue-500/30' href='/blog'>Blog</a>
                     <a href="#contact" class="px-5 py-2.5 bg-blue-700 text-white rounded-full hover:bg-blue-800 shadow-lg font-medium">Get a Quote</a>
                 </div>
             </div>
@@ -381,7 +389,6 @@
                         .filter(f => f.name.toLowerCase().endsWith('.md'))
                         .sort((a, b) => b.name.localeCompare(a.name));
                 } else {
-                    // PRIVATE REPO FALLBACK: Route directly through Netlify local static assets
                     const hardcodedFiles = [
                         "2026-03-11-reliable-copier-rental-services-for-businesses-in-metro-manila-peza-zones-1.md",
                         "2026-03-11-reliable-copier-rental-services-for-businesses-in-metro-manila-peza-zones.md",
@@ -394,14 +401,12 @@
                     }));
                 }
 
-                // Render the single most recent post inside the container layout
                 if (mdFiles[0]) {
                     const contentRes = await fetch(mdFiles[0].download_url);
                     if (!contentRes.ok) throw new Error("Fallback file read failed");
                     
                     const text = await contentRes.text();
                     
-                    // Fixed safe regex syntax for clean frontmatter parsing
                     const titleMatch = text.match(/^title:\s*["']?(.*?)["']?\s*\r?$/m);
                     const descMatch = text.match(/^description:\s*["']?(.*?)["']?\s*\r?$/m);
                     const thumbMatch = text.match(/^thumbnail:\s*["']?(.*?)["']?\s*\r?$/m);
@@ -489,7 +494,6 @@
 
         function closeModal() { document.getElementById('inquiryModal').classList.add('hidden'); }
         
-        // Execute the function
         fetchLatestInsight();
     </script>
 </body>

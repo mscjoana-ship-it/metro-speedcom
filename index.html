@@ -12,27 +12,26 @@
     <meta name="p:domain_verify" content="5d244ddff31976690bafc7558a0ec939"/>
     <link rel="canonical" href="https://metro-speedcom.netlify.app/" />
     <meta charset="UTF-8">
+    <meta name="hosting-provider" content="Netlify">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- OPTIMIZED SEO TITLE & METAS -->
     <title>Copier & Printer Rental Metro Manila | Metro Speedcom</title>
     <meta name="description" content="Metro Speedcom offers Kyocera & Samsung copier rentals, printer leasing, laptops, and desktops for offices and PEZA companies in Metro Manila and Tarlac.">
     <meta name="keywords" content="Copier Rental Philippines, Printer Rental Metro Manila, Kyocera Copier Rental, Samsung Copier Rental, Laptop Rental Manila, Desktop Rental, PEZA Office Equipment, Metro Speedcom Tarlac, Copier Machine Leasing Quezon City">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         body { font-family: 'Inter', sans-serif; }
         .hero-pattern { background-color: #0f172a; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
         .glass-effect { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
     </style>
 
-    <!-- ENHANCED LOCAL BUSINESS SCHEMA -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -376,8 +375,8 @@
         async function fetchLatestInsight() {
             const container = document.getElementById('home-insight-container');
             const GITHUB_USER = "mscjoana-ship-it"; 
-            const REPO_NAME = "metro-speedcom";   
-            const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/posts`;
+            const REPO_NAME = "metro-speedcom";               
+            const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/posts?t=${new Date().getTime()}`;
 
             try {
                 const res = await fetch(apiUrl);
@@ -390,6 +389,7 @@
                         .sort((a, b) => b.name.localeCompare(a.name));
                 } else {
                     const hardcodedFiles = [
+                        "2026-09-16-complete-guide-to-copier-rentals-in-metro-manila-nearby-provinces.md",
                         "2026-03-11-reliable-copier-rental-services-for-businesses-in-metro-manila-peza-zones-1.md",
                         "2026-03-11-reliable-copier-rental-services-for-businesses-in-metro-manila-peza-zones.md",
                         "2026-02-06-efficient-copier-it-rentals.md"
@@ -408,11 +408,11 @@
                     const text = await contentRes.text();
                     
                     const titleMatch = text.match(/^title:\s*["']?(.*?)["']?\s*\r?$/m);
-                    const descMatch = text.match(/^description:\s*["']?(.*?)["']?\s*\r?$/m);
+                    const descMatch = text.match(/^description:\s*["']?([\s\S]*?)["']?\s*\r?$/m);
                     const thumbMatch = text.match(/^thumbnail:\s*["']?(.*?)["']?\s*\r?$/m);
 
                     const title = titleMatch ? titleMatch[1] : "Update";
-                    const desc = descMatch ? descMatch[1] : "Latest news from Metro Speedcom.";
+                    const desc = descMatch ? descMatch[1].replace(/\n/g, ' ') : "Latest news from Metro Speedcom.";
                     const img = thumbMatch ? thumbMatch[1] : "logo.PNG";
 
                     container.innerHTML = `

@@ -48,14 +48,14 @@
                 let mdFiles = [];
                 
                 if (response.ok) {
-                    // If the repository is ever made public or token-authorized
                     const files = await response.json();
                     mdFiles = files
                         .filter(f => f.name.toLowerCase().endsWith('.md'))
                         .sort((a, b) => b.name.localeCompare(a.name));
                 } else {
-                    // PRIVATE REPO FALLBACK: Read directly via Netlify routing using your exact filenames
+                    // PRIVATE REPO FALLBACK: Includes the new blog post
                     const hardcodedFiles = [
+                        "2026-09-16-complete-guide-to-copier-rentals-in-metro-manila-nearby-provinces.md",
                         "2026-03-11-reliable-copier-rental-services-for-businesses-in-metro-manila-peza-zones-1.md",
                         "2026-03-11-reliable-copier-rental-services-for-businesses-in-metro-manila-peza-zones.md",
                         "2026-02-06-efficient-copier-it-rentals.md"
@@ -63,7 +63,7 @@
                     
                     mdFiles = hardcodedFiles.map(name => ({
                         name: name,
-                        download_url: `/posts/${name}?t=${new Date().getTime()}` // Cache buster included
+                        download_url: `/posts/${name}?t=${new Date().getTime()}`
                     }));
                 }
 
@@ -74,7 +74,6 @@
 
                 container.innerHTML = ''; 
 
-                // Loop and render the files
                 for (const file of mdFiles) {
                     try {
                         const contentRes = await fetch(file.download_url);
@@ -82,16 +81,14 @@
 
                         const text = await contentRes.text();
 
-                        // Regex structures to capture parameters across formatting variations
                         const titleMatch = text.match(/^title:\s*["']?(.*?)["']?\s*\r?$/m);
-                        const descMatch = text.match(/^description:\s*["']?(.*?)["']?\s*\r?$/m);
+                        const descMatch = text.match(/^description:\s*["']?([\s\S]*?)["']?\s*\r?$/m);
                         const thumbMatch = text.match(/^thumbnail:\s*["']?(.*?)["']?\s*\r?$/m);
                         
                         const title = titleMatch ? titleMatch[1] : "Metro Speedcom Update";
-                        const desc = descMatch ? descMatch[1] : "Read our latest announcement regarding copier and IT rentals.";
+                        const desc = descMatch ? descMatch[1].replace(/\n/g, ' ') : "Read our latest announcement regarding copier and IT rentals.";
                         const img = thumbMatch ? thumbMatch[1] : "";
                         
-                        // Grab date label from standard YYYY-MM-DD template prefix
                         const dateLabel = file.name.substring(0, 10); 
 
                         container.innerHTML += `
@@ -136,7 +133,6 @@
                 </div>`;
         }
 
-        // Run the fetch
         fetchPosts();
     </script>
 </body>

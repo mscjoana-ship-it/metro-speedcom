@@ -16,8 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Copier & Printer Rental Metro Manila | Metro Speedcom</title>
-    <meta name="description" content="Metro Speedcom offers Kyocera & Samsung copier rentals, printer leasing, laptops, and desktops for offices and PEZA companies in Metro Manila and Tarlac.">
-    <meta name="keywords" content="Copier Rental Philippines, Printer Rental Metro Manila, Kyocera Copier Rental, Samsung Copier Rental, Laptop Rental Manila, Desktop Rental, PEZA Office Equipment, Metro Speedcom Tarlac, Copier Machine Leasing Quezon City">
+    <meta name="description" content="Metro Speedcom offers Epson EcoTank & Samsung X7500LX copier rentals, A3/A4 multifunction printer leasing, laptops, desktops, and shredders for offices and PEZA companies in Metro Manila and Tarlac.">
+    <meta name="keywords" content="Copier Rental Philippines, Printer Rental Metro Manila, Epson L121 Rental, Epson L3310 Rental, Epson L5390 Rental, Samsung X7500LX Rental, Laptop Rental Manila, Desktop Rental, PEZA Office Equipment, Metro Speedcom Tarlac, Copier Machine Leasing Quezon City">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,8 +49,8 @@
         "postalCode": "1112",
         "addressCountry": "PH"
       },
-      "areaServed": ["Metro Manila", "Quezon City", "Tarlac", "CALABARZON"],
-      "description": "Trusted provider of Kyocera and Samsung copier rentals, multi-function printer leasing, laptops, and IT equipment for corporate offices and PEZA locators."
+      "areaServed": ["Metro Manila", "Quezon City", "Tarlac", "Central Luzon", "CALABARZON"],
+      "description": "Trusted provider of Epson EcoTank printers, Samsung X7500LX color copiers, A3/A4 multifunction printers, laptops, desktops, and shredders for corporate offices and PEZA locators."
     }
     </script>
 </head>
@@ -58,32 +58,55 @@
     <nav class="fixed w-full z-50 glass-effect border-b border-slate-200 shadow-sm transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <img src="logo.PNG" alt="Logo" class="h-12 w-auto">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0); closeMobileMenu();">
+                    <img src="logo.PNG" alt="Metro Speedcom Logo" class="h-12 w-auto">
                     <div>
                         <h1 class="font-bold text-xl tracking-tight text-slate-900 uppercase">METRO SPEEDCOM</h1>
-                        <span class="text-xs text-blue-700 font-semibold uppercase">Copier & IT Rentals</span>
+                        <span class="text-xs text-blue-700 font-semibold uppercase">Copier &amp; IT Rentals</span>
                     </div>
                 </div>
-                <div class="hidden md:flex space-x-8 items-center">
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-7 items-center">
                     <a href="#home" class="text-slate-600 hover:text-blue-700 font-medium">Home</a>
                     <a href="#about" class="text-slate-600 hover:text-blue-700 font-medium">About Us</a>
+                    <a href="#deployments" class="text-slate-600 hover:text-blue-700 font-medium">Track Record</a>
                     <a href="#rentals" class="text-slate-600 hover:text-blue-700 font-medium">Rentals</a>
                     <a href="#leasing-plans" class="text-slate-600 hover:text-blue-700 font-medium">Leasing Plans</a>
-                    <a class='text-slate-600 hover:text-blue-700 font-medium transition underline decoration-blue-500/30' href='/blog'>Blog</a>
+                    <a class="text-slate-600 hover:text-blue-700 font-medium transition underline decoration-blue-500/30" href="/blog">Blog</a>
                     <a href="#contact" class="px-5 py-2.5 bg-blue-700 text-white rounded-full hover:bg-blue-800 shadow-lg font-medium">Get a Quote</a>
                 </div>
+
+                <!-- Mobile Hamburger Button -->
+                <div class="md:hidden flex items-center">
+                    <button type="button" id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu" aria-expanded="false" class="p-2.5 rounded-lg text-slate-700 hover:text-blue-700 hover:bg-slate-100 focus:outline-none transition">
+                        <i id="mobileMenuIcon" class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-200 px-4 pt-3 pb-6 space-y-2 shadow-lg">
+            <a href="#home" onclick="closeMobileMenu()" class="block px-3 py-2.5 rounded-lg text-slate-700 hover:bg-blue-50 hover:text-blue-700 font-medium">Home</a>
+            <a href="#about" onclick="closeMobileMenu()" class="block px-3 py-2.5 rounded-lg text-slate-700 hover:bg-blue-50 hover:text-blue-700 font-medium">About Us</a>
+            <a href="#deployments" onclick="closeMobileMenu()" class="block px-3 py-2.5 rounded-lg text-slate-700 hover:bg-blue-50 hover:text-blue-700 font-medium">Track Record</a>
+            <a href="#rentals" onclick="closeMobileMenu()" class="block px-3 py-2.5 rounded-lg text-slate-700 hover:bg-blue-50 hover:text-blue-700 font-medium">Rentals</a>
+            <a href="#leasing-plans" onclick="closeMobileMenu()" class="block px-3 py-2.5 rounded-lg text-slate-700 hover:bg-blue-50 hover:text-blue-700 font-medium">Leasing Plans</a>
+            <a href="/blog" onclick="closeMobileMenu()" class="block px-3 py-2.5 rounded-lg text-slate-700 hover:bg-blue-50 hover:text-blue-700 font-medium">Blog</a>
+            <div class="pt-2">
+                <a href="#contact" onclick="closeMobileMenu()" class="block text-center px-5 py-3 bg-blue-700 text-white rounded-xl hover:bg-blue-800 shadow-md font-semibold">Get a Quote</a>
             </div>
         </div>
     </nav>
 
     <section id="home" class="pt-32 pb-20 lg:pt-48 lg:pb-32 hero-pattern text-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center lg:text-left">
-            <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-8">Copier & Laptop <br><span class="text-blue-400">Rentals Philippines</span></h1>
-            <p class="text-lg text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0">Trusted provider of Samsung and Kyocera copier rentals, laptops, and desktops for offices and PEZA locators.</p>
+            <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-8">Copier, Printer &amp; Laptop <br><span class="text-blue-400">Rentals Philippines</span></h1>
+            <p class="text-lg text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0">Trusted provider of Epson EcoTank printers, Samsung color copiers, A3/A4 multifunction machines, laptops, and desktops for offices and PEZA locators.</p>
             <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
-                <a href="#rentals" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition">View Rental Plans</a>
-                <a href="#contact" class="px-8 py-4 bg-slate-800 border border-slate-700 rounded-lg font-semibold transition">Contact Us</a>
+                <a href="#rentals" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition">View Rental Packages</a>
+                <a href="#contact" class="px-8 py-4 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg font-semibold transition">Book Free On-Site Demo</a>
             </div>
         </div>
     </section>
@@ -94,15 +117,15 @@
                 <div>
                     <span class="text-blue-700 font-bold tracking-widest uppercase text-sm">About Metro Speedcom</span>
                     <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-4 mb-6 leading-tight">
-                        Your Trusted Partner in <span class="text-blue-600">Office Equipment & IT Rentals</span>
+                        Your Trusted Partner in <span class="text-blue-600">Office Equipment &amp; IT Rentals</span>
                     </h2>
                     <p class="text-lg text-slate-600 mb-6 leading-relaxed">
-                        Metro Speedcom is a leading provider of <strong>copier rentals, laptop rentals, and desktop rentals</strong> in the Philippines. We help businesses reduce operational costs through reliable, cost-efficient solutions tailored for corporations, startups, schools, and <strong>PEZA-registered companies</strong>.
+                        Metro Speedcom is a leading provider of <strong>copier rentals, printer rentals, laptop rentals, and desktop rentals</strong> in the Philippines. We help businesses reduce operational costs through reliable, cost-efficient solutions tailored for corporations, startups, schools, and <strong>PEZA-registered companies</strong>.
                     </p>
                     <div class="bg-blue-50 p-6 rounded-2xl border-l-4 border-blue-600 shadow-sm">
-                        <h4 class="font-bold text-slate-900 mb-2">Strategically Located to Serve You</h4>
+                        <h4 class="font-bold text-slate-900 mb-2">Strategically Located + Free On-Site Consultation</h4>
                         <p class="text-sm text-slate-600 leading-relaxed">
-                            With our main office in <strong>Quezon City</strong> and a dedicated warehouse in <strong>Concepcion, Tarlac</strong>, we efficiently serve clients across <strong>Metro Manila, Central Luzon</strong>, and nearby provinces.
+                            With our main office in <strong>Quezon City</strong> and a dedicated warehouse in <strong>Concepcion, Tarlac</strong>, we serve clients across <strong>Metro Manila, Central Luzon</strong>, and nearby provinces—and offer <strong>complimentary on-site meetings and live equipment demos</strong> before you commit.
                         </p>
                     </div>
                 </div>
@@ -123,10 +146,10 @@
                     </div>
                     <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm">
                         <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center mb-4 text-xl">
-                            <i class="fa-solid fa-handshake"></i>
+                            <i class="fa-solid fa-laptop-file"></i>
                         </div>
-                        <h3 class="font-bold text-slate-900 mb-2">Flexible Plans</h3>
-                        <p class="text-xs text-slate-600">Customized rental options to fit the specific needs of startups and large PEZA-registered enterprises.</p>
+                        <h3 class="font-bold text-slate-900 mb-2">On-Site Meeting &amp; Demo</h3>
+                        <p class="text-xs text-slate-600">Request an office visit or live hardware demonstration so your team can test print quality and speed firsthand.</p>
                     </div>
                     <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm">
                         <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center mb-4 text-xl">
@@ -140,24 +163,195 @@
         </div>
     </section>
 
-    <section id="rentals" class="py-20 bg-slate-50 text-center">
+    <!-- Client Trust & Deployment Highlights Section -->
+    <section id="deployments" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-blue-400 font-bold tracking-widest uppercase text-xs">Proven Track Record</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-4">Trusted Across BPOs, PEZA Zones &amp; Multi-Branch Enterprises</h2>
+                <p class="text-slate-300 text-sm md:text-base">From rapid 60-unit workstation rollouts in BGC to industrial PEZA compliance in Luzon, our dual-hub logistics keep critical operations running without downtime.</p>
+            </div>
+
+            <!-- Key Operational Metrics -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-14">
+                <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-blue-400 mb-1">350+</div>
+                    <div class="text-xs md:text-sm font-semibold text-white">Active Fleet Units</div>
+                    <div class="text-[11px] text-slate-400 mt-1">Copiers, Printers &amp; PCs</div>
+                </div>
+                <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-blue-400 mb-1">2 Hubs</div>
+                    <div class="text-xs md:text-sm font-semibold text-white">QC &amp; Tarlac Dispatch</div>
+                    <div class="text-[11px] text-slate-400 mt-1">NCR, Central &amp; South Luzon</div>
+                </div>
+                <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-blue-400 mb-1">&lt; 3 PM</div>
+                    <div class="text-xs md:text-sm font-semibold text-white">Same-Day NCR Dispatch</div>
+                    <div class="text-[11px] text-slate-400 mt-1">Guaranteed SLA Response</div>
+                </div>
+                <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 text-center">
+                    <div class="text-3xl md:text-4xl font-bold text-blue-400 mb-1">100%</div>
+                    <div class="text-xs md:text-sm font-semibold text-white">PEZA &amp; PO Ready</div>
+                    <div class="text-[11px] text-slate-400 mt-1">Full Accreditation Docs</div>
+                </div>
+            </div>
+
+            <!-- Anonymized Deployment Highlights -->
+            <div class="grid md:grid-cols-3 gap-6 text-left">
+                <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-7 flex flex-col">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-blue-500/20 text-blue-300 text-xs font-bold px-3 py-1 rounded-full">BPO &amp; Tech Operations</span>
+                        <i class="fa-solid fa-desktop text-blue-400 text-lg"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">60-Unit Workstation Ramp-Up in Taguig</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed mb-5 flex-grow">Delivered, staged, and QA-tested 60 business desktop CPU bundles complete with peripherals and dual-display cables on a tight BGC operational timeline.</p>
+                    <div class="text-xs text-slate-400 border-t border-slate-700/80 pt-3 flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-blue-400"></i> Bonifacio Global City &amp; Taguig
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-7 flex flex-col">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-blue-500/20 text-blue-300 text-xs font-bold px-3 py-1 rounded-full">PEZA &amp; Industrial Zones</span>
+                        <i class="fa-solid fa-industry text-blue-400 text-lg"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">PEZA Locator Copier &amp; Shredder Fleets</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed mb-5 flex-grow">Equipped manufacturing and logistics locators with high-speed A3/A4 copiers and Daejin Kostal shredders, handling full PEZA gatepasses, permits, and preventive maintenance.</p>
+                    <div class="text-xs text-slate-400 border-t border-slate-700/80 pt-3 flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-blue-400"></i> Laguna, Cavite, Clark &amp; Tarlac
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/60 border border-slate-700 rounded-2xl p-7 flex flex-col">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-blue-500/20 text-blue-300 text-xs font-bold px-3 py-1 rounded-full">Multi-Branch &amp; Events</span>
+                        <i class="fa-solid fa-building-circle-check text-blue-400 text-lg"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Branch Expansions &amp; Executive Summits</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed mb-5 flex-grow">Standardized Epson EcoTank and workgroup printer rollouts for expanding provincial branches, plus short-term hotel &amp; summit IT rentals with dedicated onsite technicians.</p>
+                    <div class="text-xs text-slate-400 border-t border-slate-700/80 pt-3 flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-blue-400"></i> Metro Manila, Rizal &amp; Central Luzon
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="rentals" class="py-20 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-slate-900 mb-12">Equipment Rental Packages</h2>
-            <div class="grid md:grid-cols-3 gap-8 text-center">
-                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition">
-                    <img src="Kyocera-copier.png" alt="Kyocera" class="h-40 mx-auto mb-6">
-                    <h3 class="text-xl font-bold mb-4">Kyocera Copier</h3>
-                    <button onclick="openModal('Kyocera Copier Rental')" class="w-full py-3 bg-blue-600 text-white rounded-lg font-semibold">Inquire Now</button>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-3">Equipment Rental Packages</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Compare our available printer, copier, and IT hardware configurations for short-term projects or long-term corporate leases.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Card 1: Epson Inkjet Rentals -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition flex flex-col text-left">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-16 h-16 bg-blue-50 text-blue-700 rounded-2xl flex items-center justify-center text-3xl">
+                            <i class="fa-solid fa-print"></i>
+                        </div>
+                        <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Compact A4 Series</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Epson Inkjet Rentals (EcoTank)</h3>
+                    <p class="text-sm text-slate-600 mb-6">Energy-efficient A4 color ink tank printers built for daily workstations, satellite branches, and admin teams.</p>
+
+                    <div class="space-y-3 mb-6 text-sm text-slate-700 border-t border-slate-100 pt-5 flex-grow">
+                        <div>
+                            <strong class="text-slate-900">Epson EcoTank L121:</strong> Single-function color printer (up to 9.0 ipm black / 4.8 ipm color), ultra-compact footprint, high-yield ink tank.
+                        </div>
+                        <div>
+                            <strong class="text-slate-900">Epson EcoTank L3310:</strong> 3-in-1 Print, Scan &amp; Copy (up to 11.0 ipm black / 6.0 ipm color), 100-sheet input tray, borderless printing.
+                        </div>
+                        <div>
+                            <strong class="text-slate-900">Epson EcoTank L5390:</strong> 4-in-1 Wi-Fi &amp; Ethernet MFP with Fax, 30-sheet Auto Document Feeder (ADF), and Wi-Fi Direct.
+                        </div>
+                        <div class="pt-2 text-xs text-slate-500">
+                            <i class="fa-solid fa-circle-check text-blue-600 mr-1.5"></i> Heat-Free low-power operation, spill-free ink bottles &amp; onsite support included
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="openModal('Epson Inkjet Rental')" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition">Request Epson Quote</button>
                 </div>
-                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition">
-                    <img src="Samsung-copier.png" alt="Samsung" class="h-40 mx-auto mb-6">
-                    <h3 class="text-xl font-bold mb-4">Samsung Copier</h3>
-                    <button onclick="openModal('Samsung Copier Rental')" class="w-full py-3 bg-blue-600 text-white rounded-lg font-semibold">Inquire Now</button>
+
+                <!-- Card 2: Samsung Flagship Color Copier -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition flex flex-col text-left">
+                    <div class="flex items-center justify-between mb-6">
+                        <img src="Samsung-copier.png" alt="Samsung Smart MultiXpress X7500LX" class="h-24 w-auto object-contain">
+                        <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">50 ppm Flagship</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Samsung Color Copier Rental</h3>
+                    <p class="text-sm text-slate-600 mb-6">High-speed enterprise A3+ color multifunction system built for heavy-duty corporate production.</p>
+
+                    <div class="space-y-3 mb-6 text-sm text-slate-700 border-t border-slate-100 pt-5 flex-grow">
+                        <div>
+                            <strong class="text-slate-900">Model: Samsung Smart MultiXpress X7500LX</strong>
+                        </div>
+                        <div>
+                            <strong class="text-slate-900">Speed &amp; Volume:</strong> 50 ppm (Color &amp; B&amp;W) with a 100,000-page monthly duty cycle and automatic 2-sided print, copy &amp; scan.
+                        </div>
+                        <div>
+                            <strong class="text-slate-900">Media &amp; Interface:</strong> Supports up to A3+ paper (70–180 gsm), dual 500-sheet trays + custom bypass tray, 1200x1200 dpi, Android smart touch panel, and Gigabit LAN.
+                        </div>
+                        <div class="pt-2 text-xs text-slate-500">
+                            <i class="fa-solid fa-circle-check text-blue-600 mr-1.5"></i> Ideal for large offices needing fast color presentations, marketing runs &amp; high-volume output
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="openModal('Samsung X7500LX Rental')" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition">Request Samsung X7500LX Quote</button>
                 </div>
-                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition">
-                    <img src="Laptop-and-desktop.png" alt="IT" class="h-40 mx-auto mb-6">
-                    <h3 class="text-xl font-bold mb-4">IT Equipment</h3>
-                    <button onclick="openModal('IT Equipment Rental')" class="w-full py-3 bg-blue-600 text-white rounded-lg font-semibold">Inquire Now</button>
+
+                <!-- Card 3: Workgroup A3/A4 Multifunction Copiers (Unbranded) -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition flex flex-col text-left">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-16 h-16 bg-slate-100 text-slate-800 rounded-2xl flex items-center justify-center text-3xl">
+                            <i class="fa-solid fa-copy"></i>
+                        </div>
+                        <span class="bg-slate-100 text-slate-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Mid-Volume A3 / A4</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Workgroup A3/A4 Multifunction Copiers</h3>
+                    <p class="text-sm text-slate-600 mb-6">Reliable commercial monochrome and full-color floorstanding or tabletop copiers for shared office departments.</p>
+
+                    <div class="space-y-3 mb-6 text-sm text-slate-700 border-t border-slate-100 pt-5 flex-grow">
+                        <div>
+                            <strong class="text-slate-900">Output Options:</strong> Available in 25 ppm to 40 ppm Monochrome or Full-Color configurations (A4, Legal, Folio, and A3).
+                        </div>
+                        <div>
+                            <strong class="text-slate-900">Core Functions:</strong> Print, Copy, and Unlimited Color Scan-to-Folder/Email with Duplex Automatic Document Feeder (ADF).
+                        </div>
+                        <div>
+                            <strong class="text-slate-900">Turnkey Network Setup:</strong> Hardwired Gigabit LAN integration with full driver and Scan-to-PC setup across all user workstations.
+                        </div>
+                        <div class="pt-2 text-xs text-slate-500">
+                            <i class="fa-solid fa-circle-check text-blue-600 mr-1.5"></i> Matched to your exact monthly page volume and footprint during quotation
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="openModal('Workgroup A3/A4 Copier Rental')" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition">Request Copier Quote</button>
+                </div>
+
+                <!-- Card 4: IT Equipment Rentals -->
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition flex flex-col text-left">
+                    <div class="flex items-center justify-between mb-6">
+                        <img src="Laptop-and-desktop.png" alt="IT Equipment Rentals" class="h-24 w-auto object-contain">
+                        <span class="bg-slate-100 text-slate-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Bulk &amp; Events</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">IT Equipment Rentals</h3>
+                    <p class="text-sm text-slate-600 mb-6">QA-tested hardware bundles ready for BPO ramp-ups, corporate events, training rooms, and daily office operations.</p>
+
+                    <div class="space-y-3 mb-6 text-sm text-slate-700 border-t border-slate-100 pt-5 flex-grow">
+                        <div>
+                            <strong class="text-slate-900">Business Desktops:</strong> Intel Core i3 / i5 (8th Gen+) / i7, 16GB DDR4 RAM, 256GB SSD, Windows 10/11 Pro, 22&quot; LED monitor &amp; peripherals (or CPU-only bundles).
+                        </div>
+                        <div>
+                            <strong class="text-slate-900">Corporate Laptops:</strong> Intel Core i5 / i7 business-class laptops, 8GB–16GB RAM, 256GB–512GB SSD, Windows 10/11 Pro &amp; charger.
+                        </div>
+                        <div>
+                            <strong class="text-slate-900">Paper Shredders:</strong> <strong>Daejin Kostal</strong> heavy-duty office shredders for secure disposal of confidential corporate and PEZA documents.
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="openModal('IT Equipment Rental')" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition">Request IT Equipment Quote</button>
                 </div>
             </div>
         </div>
@@ -167,54 +361,81 @@
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-slate-900 mb-4 uppercase tracking-tight">Flexible Leasing Plans</h2>
-                <p class="text-slate-600 max-w-2xl mx-auto">Cost-efficient printing solutions for Samsung and Kyocera multi-function printers.</p>
+                <p class="text-slate-600 max-w-2xl mx-auto">Choose the billing structure that best fits how your team prints—covering Epson EcoTank printers, Samsung X7500LX copiers, and A3/A4 multifunction systems.</p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="border border-slate-200 rounded-2xl p-6 flex flex-col hover:border-blue-500 transition-colors">
-                    <h4 class="text-lg font-bold text-blue-700 mb-2">Per Consumables Plan</h4>
-                    <p class="text-xs font-bold text-slate-600 uppercase mb-4 tracking-wider">No Monthly Rental Fee</p>
-                    <p class="text-sm text-slate-600 mb-6 flex-grow">A cost-efficient option for businesses that want to use the machine without a monthly rental charge.</p>
-                    <ul class="text-left space-y-3 mb-8 text-sm text-slate-700 border-t pt-6 border-slate-100">
+                <!-- Plan 1: Per Consumables Plan -->
+                <div class="border border-slate-200 rounded-2xl p-6 flex flex-col hover:border-blue-500 transition-colors text-left">
+                    <div class="mb-3">
+                        <span class="inline-block bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-1 rounded-md">
+                            <i class="fa-solid fa-layer-group text-blue-600 mr-1"></i> Best for Heavy-Volume Print Runs
+                        </span>
+                    </div>
+                    <h4 class="text-lg font-bold text-blue-700 mb-1">Per Consumables Plan</h4>
+                    <p class="text-xs font-bold text-slate-500 uppercase mb-4 tracking-wider">No Monthly Rental Fee</p>
+                    <p class="text-sm text-slate-600 mb-6 flex-grow">Built for heavy-printing offices that want ₱0 machine rental and can maximize a full toner/ink set each month.</p>
+                    <ul class="space-y-3 mb-8 text-sm text-slate-700 border-t pt-6 border-slate-100">
                         <li><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i> Free use of machine</li>
-                        <li><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i> Purchase 1 set toner/mo</li>
+                        <li><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i> Purchase 1 set toner/ink/mo</li>
                         <li><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i> Unlimited scanning</li>
                     </ul>
-                    <a href="#contact" class="block text-center py-2 bg-slate-900 text-white rounded-lg font-bold text-sm">Inquire Now</a>
+                    <a href="#contact" class="block text-center py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg font-bold text-sm transition">Inquire Now</a>
                 </div>
-                <div class="border border-slate-200 rounded-2xl p-6 flex flex-col hover:border-blue-500 transition-colors">
-                    <h4 class="text-lg font-bold text-blue-700 mb-2">Flexible Plan</h4>
-                    <p class="text-xs font-bold text-slate-600 uppercase mb-4 tracking-wider">Low Monthly + Consumables</p>
-                    <p class="text-sm text-slate-600 mb-6 flex-grow">Ideal for businesses that prefer predictable access while purchasing supplies only when necessary.</p>
-                    <ul class="text-left space-y-3 mb-8 text-sm text-slate-700 border-t pt-6 border-slate-100">
+
+                <!-- Plan 2: Flexible Plan -->
+                <div class="border border-slate-200 rounded-2xl p-6 flex flex-col hover:border-blue-500 transition-colors text-left">
+                    <div class="mb-3">
+                        <span class="inline-block bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-1 rounded-md">
+                            <i class="fa-solid fa-layer-group text-blue-600 mr-1"></i> Best for Light or Seasonal Printing
+                        </span>
+                    </div>
+                    <h4 class="text-lg font-bold text-blue-700 mb-1">Flexible Plan</h4>
+                    <p class="text-xs font-bold text-slate-500 uppercase mb-4 tracking-wider">Low Monthly + Consumables</p>
+                    <p class="text-sm text-slate-600 mb-6 flex-grow">Ideal for small offices, branches, and seasonal teams that want a low fixed baseline and buy supplies only as needed.</p>
+                    <ul class="space-y-3 mb-8 text-sm text-slate-700 border-t pt-6 border-slate-100">
                         <li><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i> Fixed monthly rental</li>
                         <li><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i> Buy consumables as needed</li>
                         <li><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i> Unlimited scanning</li>
                     </ul>
-                    <a href="#contact" class="block text-center py-2 bg-slate-900 text-white rounded-lg font-bold text-sm">Inquire Now</a>
+                    <a href="#contact" class="block text-center py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg font-bold text-sm transition">Inquire Now</a>
                 </div>
-                <div class="border-2 border-blue-600 shadow-xl rounded-2xl p-6 flex flex-col relative scale-105 bg-white z-10">
+
+                <!-- Plan 3: Per Page Plan (Recommended) -->
+                <div class="border-2 border-blue-600 shadow-xl rounded-2xl p-6 flex flex-col relative lg:scale-105 bg-white z-10 text-left">
                     <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest">Recommended</div>
-                    <h4 class="text-lg font-bold text-blue-700 mb-2">Per Page Plan</h4>
+                    <div class="mb-3">
+                        <span class="inline-block bg-blue-50 text-blue-700 text-[11px] font-bold px-2.5 py-1 rounded-md">
+                            <i class="fa-solid fa-layer-group text-blue-600 mr-1"></i> Best for Variable Monthly Printing
+                        </span>
+                    </div>
+                    <h4 class="text-lg font-bold text-blue-700 mb-1">Per Page Plan</h4>
                     <p class="text-xs font-bold text-blue-500 uppercase mb-4 tracking-wider">Fully Managed Solution</p>
-                    <p class="text-sm text-slate-600 mb-6 flex-grow">Pay based on actual usage. A worry-free plan where all consumables are already covered.</p>
-                    <ul class="text-left space-y-3 mb-8 text-sm text-slate-700 border-t pt-6 border-blue-50">
+                    <p class="text-sm text-slate-600 mb-6 flex-grow">Pay strictly based on actual usage. A worry-free plan where all toners, inks, drums, and parts are covered.</p>
+                    <ul class="space-y-3 mb-8 text-sm text-slate-700 border-t pt-6 border-blue-50">
                         <li><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i> Monthly rental + cost/page</li>
                         <li><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i> Consumables provided</li>
                         <li><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i> Unlimited scanning</li>
                     </ul>
-                    <a href="#contact" class="block text-center py-2 bg-blue-600 text-white rounded-lg font-bold text-sm">Inquire Now</a>
+                    <a href="#contact" class="block text-center py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold text-sm transition">Inquire Now</a>
                 </div>
-                <div class="border border-slate-200 rounded-2xl p-6 flex flex-col hover:border-blue-500 transition-colors">
-                    <h4 class="text-lg font-bold text-blue-700 mb-2">Quota-Based Plan</h4>
-                    <p class="text-xs font-bold text-slate-600 uppercase mb-4 tracking-wider">Fixed Monthly Allocation</p>
-                    <p class="text-sm text-slate-600 mb-6 flex-grow">Designed for companies with consistent monthly volume and controlled printing costs.</p>
-                    <ul class="text-left space-y-3 mb-8 text-sm text-slate-700 border-t pt-6 border-slate-100">
+
+                <!-- Plan 4: Quota-Based Plan -->
+                <div class="border border-slate-200 rounded-2xl p-6 flex flex-col hover:border-blue-500 transition-colors text-left">
+                    <div class="mb-3">
+                        <span class="inline-block bg-slate-100 text-slate-700 text-[11px] font-bold px-2.5 py-1 rounded-md">
+                            <i class="fa-solid fa-layer-group text-blue-600 mr-1"></i> Best for Steady, Fixed Budgets
+                        </span>
+                    </div>
+                    <h4 class="text-lg font-bold text-blue-700 mb-1">Quota-Based Plan</h4>
+                    <p class="text-xs font-bold text-slate-500 uppercase mb-4 tracking-wider">Fixed Monthly Allocation</p>
+                    <p class="text-sm text-slate-600 mb-6 flex-grow">Designed for departments with consistent monthly print runs that need predictable, fixed-budget billing.</p>
+                    <ul class="space-y-3 mb-8 text-sm text-slate-700 border-t pt-6 border-slate-100">
                         <li><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i> Monthly print quota</li>
                         <li><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i> Excess page charges apply</li>
                         <li><i class="fa-solid fa-circle-check text-blue-600 mr-2"></i> Consumables provided</li>
                     </ul>
-                    <a href="#contact" class="block text-center py-2 bg-slate-900 text-white rounded-lg font-bold text-sm">Inquire Now</a>
+                    <a href="#contact" class="block text-center py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg font-bold text-sm transition">Inquire Now</a>
                 </div>
             </div>
 
@@ -227,16 +448,79 @@
                     </div>
                     <div class="flex items-center justify-center gap-3">
                         <i class="fa-solid fa-circle-check text-blue-500 text-sm"></i>
-                        <span class="text-xs md:text-sm font-semibold whitespace-nowrap">Onsite Service & Maintenance</span>
+                        <span class="text-xs md:text-sm font-semibold whitespace-nowrap">Onsite Service &amp; Maintenance</span>
                     </div>
                     <div class="flex items-center justify-center gap-3">
                         <i class="fa-solid fa-circle-check text-blue-500 text-sm"></i>
-                        <span class="text-xs md:text-sm font-semibold whitespace-nowrap">Technical Support</span>
+                        <span class="text-xs md:text-sm font-semibold whitespace-nowrap">Free On-Site Meeting &amp; Demo</span>
                     </div>
                     <div class="flex items-center justify-center gap-3">
                         <i class="fa-solid fa-circle-check text-blue-500 text-sm"></i>
-                        <span class="text-xs md:text-sm font-semibold whitespace-nowrap">Reliable Business Solutions</span>
+                        <span class="text-xs md:text-sm font-semibold whitespace-nowrap">Dedicated Technical Support</span>
                     </div>
+                </div>
+            </div>
+
+            <!-- SLA & PEZA Procurement Guarantee Block -->
+            <div class="mt-10 grid md:grid-cols-2 gap-6 text-left">
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 md:p-8">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center text-lg flex-shrink-0">
+                            <i class="fa-solid fa-stopwatch"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-lg">Service Level Agreement (SLA)</h3>
+                            <p class="text-xs text-slate-500">Guaranteed Onsite Dispatch &amp; Uptime Protection</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-blue-600 mt-1 flex-shrink-0"></i>
+                            <span><strong>Metro Manila (Reported Before 3:00 PM):</strong> Same-day onsite technician dispatch.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-blue-600 mt-1 flex-shrink-0"></i>
+                            <span><strong>Metro Manila (3:00 PM Onwards):</strong> Scheduled for the next business day.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-blue-600 mt-1 flex-shrink-0"></i>
+                            <span><strong>Provincial &amp; Industrial Zones:</strong> 1 to 2 business days onsite response via our Quezon City and Tarlac hubs.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-blue-600 mt-1 flex-shrink-0"></i>
+                            <span><strong>Backup Unit Guarantee:</strong> Standby service unit provided if hardware issues require extended repair.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 md:p-8">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center text-lg flex-shrink-0">
+                            <i class="fa-solid fa-file-shield"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-lg">PEZA &amp; Corporate Procurement</h3>
+                            <p class="text-xs text-slate-500">Complete Accreditation, Gatepass &amp; Billing Support</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-blue-600 mt-1 flex-shrink-0"></i>
+                            <span><strong>PEZA Locator Support:</strong> Experienced with PEZA zone gatepasses, delivery permits, and compliance documentation.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-blue-600 mt-1 flex-shrink-0"></i>
+                            <span><strong>Corporate Vendor Accreditation:</strong> Complete SEC, BIR 2303, Mayor's Permit, and formal SLA contracts ready for onboarding.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-blue-600 mt-1 flex-shrink-0"></i>
+                            <span><strong>Flexible Corporate Billing:</strong> Purchase Order (PO) processing, VAT-compliant invoicing, and tailored lease terms.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-blue-600 mt-1 flex-shrink-0"></i>
+                            <span><strong>Free On-Site Meeting, Demo &amp; LAN Setup:</strong> Complimentary office consultation, product demo, and network configuration.</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -255,6 +539,7 @@
         <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12">
             <div>
                 <h2 class="text-3xl font-bold mb-6 text-slate-900">Get In Touch</h2>
+                <p class="text-slate-600 mb-8 text-sm leading-relaxed">Need a tailored quotation or want to schedule a free <strong>on-site meeting or live product demo</strong> at your office? Reach out directly or fill out the form.</p>
                 <div class="space-y-6 text-left">
                     <div class="flex items-center gap-4">
                         <div class="bg-blue-100 p-3 rounded-full text-blue-600"><i class="fa-solid fa-phone"></i></div>
@@ -307,17 +592,23 @@
                     <label class="text-xs font-bold text-slate-500 uppercase ml-1">Product Inquiring For:</label>
                     <select name="product" class="w-full p-3 rounded-lg border outline-none bg-white" required>
                         <option value="" disabled selected>Select an option</option>
-                        <option value="Printer Rentals">Printer Rentals</option>
+                        <option value="Epson Inkjet Rentals (L121 / L3310 / L5390)">Epson Inkjet Rentals (L121 / L3310 / L5390)</option>
+                        <option value="Samsung Smart MultiXpress X7500LX Rental">Samsung Smart MultiXpress X7500LX Rental</option>
+                        <option value="Workgroup A3/A4 Multifunction Copier Rental">Workgroup A3/A4 Multifunction Copier Rental</option>
                         <option value="Desktop | Laptop Rentals">Desktop | Laptop Rentals</option>
-                        <option value="Shredder Rentals">Shredder Rentals</option>
+                        <option value="Shredder Rentals (Daejin Kostal)">Shredder Rentals (Daejin Kostal)</option>
                         <option value="Other IT products">Other IT products</option>
                     </select>
+                </div>
+                <div class="flex items-center gap-2.5 pt-1">
+                    <input type="checkbox" id="requestDemoContact" name="request_onsite_demo" value="Yes - Requesting On-Site Meeting / Product Demo" class="w-4 h-4 text-blue-600 rounded border-slate-300">
+                    <label for="requestDemoContact" class="text-sm text-slate-700 font-medium cursor-pointer">I would like to schedule a free on-site meeting / live product demo</label>
                 </div>
                 <div>
                     <label class="text-xs font-bold text-slate-500 uppercase ml-1">Message (Optional)</label>
                     <textarea name="message" placeholder="How can we help?" rows="3" class="w-full p-3 rounded-lg border outline-none"></textarea>
                 </div>
-                <button type="submit" class="w-full py-4 bg-blue-700 text-white font-bold rounded-lg shadow-md">Submit Inquiry</button>
+                <button type="submit" class="w-full py-4 bg-blue-700 hover:bg-blue-800 text-white font-bold rounded-lg shadow-md transition">Submit Inquiry</button>
             </form>
         </div>
     </section>
@@ -346,7 +637,7 @@
     </section>
 
     <footer class="bg-slate-900 text-slate-400 py-12 text-center">
-        <p class="mb-2 text-white font-bold uppercase tracking-widest text-sm">Metro Speedcom - Copier & IT Rentals</p>
+        <p class="mb-2 text-white font-bold uppercase tracking-widest text-sm">Metro Speedcom - Copier &amp; IT Rentals</p>
         <p class="text-xs">© 2026. All rights reserved.</p>
     </footer>
 
@@ -366,12 +657,44 @@
                     <input type="tel" name="phone" placeholder="Mobile Number" class="w-full p-3 border rounded-lg" required>
                     <input type="email" name="email" placeholder="Email Address" class="w-full p-3 border rounded-lg" required>
                 </div>
-                <button class="w-full py-3 bg-blue-700 text-white font-bold rounded-lg hover:bg-blue-800 transition">Submit Inquiry</button>
+                <div class="flex items-center gap-2.5 pt-1">
+                    <input type="checkbox" id="requestDemoModal" name="request_onsite_demo" value="Yes - Requesting On-Site Meeting / Product Demo" class="w-4 h-4 text-blue-600 rounded border-slate-300">
+                    <label for="requestDemoModal" class="text-xs text-slate-700 font-medium cursor-pointer">Request a free on-site meeting / live product demo</label>
+                </div>
+                <button type="submit" class="w-full py-3 bg-blue-700 text-white font-bold rounded-lg hover:bg-blue-800 transition">Submit Inquiry</button>
             </form>
         </div>
     </div>
 
     <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('mobileMenuIcon');
+            const btn = document.getElementById('mobileMenuBtn');
+            const isHidden = menu.classList.contains('hidden');
+
+            if (isHidden) {
+                menu.classList.remove('hidden');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+                btn.setAttribute('aria-expanded', 'true');
+            } else {
+                closeMobileMenu();
+            }
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('mobileMenuIcon');
+            const btn = document.getElementById('mobileMenuBtn');
+            if (!menu || menu.classList.contains('hidden')) return;
+
+            menu.classList.add('hidden');
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+            btn.setAttribute('aria-expanded', 'false');
+        }
+
         async function fetchLatestInsight() {
             const container = document.getElementById('home-insight-container');
             const GITHUB_USER = "mscjoana-ship-it"; 
@@ -453,11 +776,12 @@
                 dynamicFields.innerHTML = `
                     <div class="grid grid-cols-2 gap-4">
                         <select name="device_type" class="w-full p-3 border rounded-lg bg-white" required>
-                            <option value="" disabled selected>Device Type</option>
+                            <option value="" disabled selected>Equipment Type</option>
                             <option value="Laptop">Laptop</option>
                             <option value="Desktop">Desktop</option>
+                            <option value="Paper Shredder">Paper Shredder</option>
                         </select>
-                        <input type="number" name="units" placeholder="Units (Min. 5)" min="5" class="w-full p-3 border rounded-lg" required>
+                        <input type="number" name="units" placeholder="Units (Min. 5 for PCs)" min="1" class="w-full p-3 border rounded-lg" required>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <input type="text" name="duration" placeholder="Rental Duration" class="w-full p-3 border rounded-lg" required>
@@ -466,8 +790,26 @@
                     <input type="text" name="start_date" placeholder="Preferred Start Date" class="w-full p-3 border rounded-lg" onfocus="(this.type='date')" required>
                     <textarea name="specs" placeholder="Preferred Specifications" rows="2" class="w-full p-3 border rounded-lg" required></textarea>
                 `;
+            } else if (name === 'Epson Inkjet Rental') {
+                title.innerText = 'Epson Inkjet Printer Quotation';
+                desc.innerText = 'Select your preferred Epson EcoTank model and print requirements:';
+                dynamicFields.innerHTML = `
+                    <select name="preferred_model" class="w-full p-3 border rounded-lg bg-white" required>
+                        <option value="" disabled selected>Select Epson Model</option>
+                        <option value="Epson EcoTank L121 (Print Only)">Epson EcoTank L121 (Print Only)</option>
+                        <option value="Epson EcoTank L3310 (Print / Scan / Copy)">Epson EcoTank L3310 (Print / Scan / Copy)</option>
+                        <option value="Epson EcoTank L5390 (Wi-Fi / LAN / ADF / Fax)">Epson EcoTank L5390 (Wi-Fi / LAN / ADF / Fax)</option>
+                        <option value="Not sure - Recommend for me">Not sure - Recommend for me</option>
+                    </select>
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="number" name="units" placeholder="Number of Units" min="1" class="w-full p-3 border rounded-lg" required>
+                        <input type="text" name="monthly_volume" placeholder="Est. Monthly Pages" class="w-full p-3 border rounded-lg" required>
+                    </div>
+                    <input type="text" name="office_location" placeholder="Office Location" class="w-full p-3 border rounded-lg" required>
+                    <input type="text" name="installation_date" placeholder="Preferred Installation Date" class="w-full p-3 border rounded-lg" onfocus="(this.type='date')" required>
+                `;
             } else {
-                title.innerText = 'Fast Copier Rental Quotation';
+                title.innerText = name === 'Samsung X7500LX Rental' ? 'Samsung X7500LX Quotation' : 'Fast Copier Rental Quotation';
                 desc.innerText = 'To help us provide an accurate quotation quickly, please provide the following details:';
                 dynamicFields.innerHTML = `
                     <input type="text" name="office_location" placeholder="Office Location" class="w-full p-3 border rounded-lg" required>
@@ -475,7 +817,7 @@
                         <input type="text" name="monthly_volume" placeholder="Monthly Print Volume" class="w-full p-3 border rounded-lg" required>
                         <select name="printing_type" class="w-full p-3 border rounded-lg bg-white" required>
                             <option value="" disabled selected>B&W or Color</option>
-                            <option value="Black & White">Black & White</option>
+                            <option value="Black & White">Black &amp; White</option>
                             <option value="Colored">Colored</option>
                         </select>
                     </div>
